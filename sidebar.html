@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+   margin: 0px;
+  padding: 10px;
+  font-size: 30px;
+}
+input[type=text] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('images/search-icon.png');
+  background-size:1%; 
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+img {
+  border-radius: 50%;
+  width:45px
+}
+.contact{
+    text-align: center;
+    border: 2px solid #d7d7d7;
+    height: 60px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+span {
+    text-align: center ;
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="flex-container">
+  <div><img src="images/aviator.png" alt="Avatar" ></div>
+  <div style=";float: right;margin-left:auto;"><img src="images/setting-icon.png" alt="Setting" ></div>
+</div>
+<form id="form" class="search-bar">
+        <input type="text" name="input" placeholder="search.." autocomplete="off" autofocus></input>
+</form>
+<div class="contact">
+    <ul>
+        <li style=";float: left;padding:5px;margin-right:auto;"><img src="images/aviator.png" alt="Avatar" >
+            <span>name</span></li>
+        
+    </ul>
+</div>
+</body>
+</html>

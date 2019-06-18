@@ -11,18 +11,21 @@
                 
             </div>
   <div class="conversation">
-              <div class="conversation-container">
+              <div class="conversation-container">vew
       </div>
               <form id="form" class="conversation-compose">
                 <div class="emoji">
-                  
+                  <img src="images/emoji-icon.png">
                 </div>
-                <input id="val" class="input-msg" name="input" placeholder="Type A message" autocomplete="off" autofocus></input>
+                <input id="val" class="input-msg" name="input" placeholder="Type a message" autocomplete="off" autofocus></input>
                 <div class="photo">
-                  <i class="zmdi zmdi-camera"></i>
+                  <i class="zmdi zmdi-camera"><img src="images/camera-icon.png"></i>
                 </div>
-                <div class="circle">
-                      <i id="msend" class="zmdi zmdi-mail-send"></i>
+                 <div class="photo">
+                    <i class="zmdi zmdi-attach"><img src="images/attach-icon.png"></i>
+                  </div>
+               <div class="circle">
+                      <i  id="msend" class="zmdi zmdi-mail-send"><img src="images/send-icon.png"></i>
                     </div>
        
    </form>
@@ -39,6 +42,10 @@
 
 
 <style>
+  img {
+  border-radius: 50%;
+  width:45px
+}
 	html {
 	box-sizing: border-box;
   height: 100%;
@@ -119,33 +126,31 @@ body {
   z-index: 2;
 }
 .conversation-compose input {
-  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 12px;
 }
 
 .conversation-compose .emoji {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
   border-radius: 5px 0 0 5px;
   flex: 0 0 auto;
   margin-left: 8px;
   width: 48px; 
 }
-.conversation-compose .input-msg {
-  border: 0;
-  flex: 1 1 auto;
-  font-size: 16px;
-  margin: 0;
-  outline: none;
-  min-width: 50px;
-}
+
 
 /*  message type krne ke phle hota h uski css with class  */
 
 .conversation-compose .photo {
   flex: 0 0 auto;
-  border-radius: 0 0 5px 0;
+
   text-align: center;
   position: relative;
   width: 48px;
@@ -167,8 +172,7 @@ border-style: solid;
 
 .conversation-compose .send {
   background: transparent;
-  border: 0;
-cursor: pointer;
+ cursor: pointer;
   flex: 0 0 auto;
   margin-left: 8px;
   margin-right: 8px;
@@ -179,7 +183,6 @@ cursor: pointer;
 
 .conversation-compose .send .circle {
   background: #008a7c;
-  border-radius: 50%;
   color: #fff;
   position: relative;
   width: 48px;

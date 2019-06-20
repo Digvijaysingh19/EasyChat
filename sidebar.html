@@ -9,15 +9,15 @@
   size: 100%;/* or inline-flex */
 }
   .side-bar{
-    width:500px;
-    height: 1000px; /* check for 100% later*/
+    width:100%;
+    height:615px; /* check for 100% later*/
     background-color: #10eaf0;
     position: relative;
     left:0%;
   }
 .flex-container {
   display: flex;
-  width:500px;
+  width:100%;
   background-color:#24009c;
 }
 
@@ -27,8 +27,8 @@
   font-size: 30px;
 }
 .message{
-  width: 1500px;
-  height: 1000px;
+  width:100%;
+  height:615px;
   background-color:#f1f4df;
   left: 60%;
 }
@@ -118,7 +118,7 @@ span {
   }
 
   .conversation-container {
-  height:51.6%;
+  height:514px;
   box-shadow: inset 0 10px 10px -10px #000000;
   overflow-x: hidden;
   padding: 0 16px;
@@ -136,7 +136,7 @@ span {
   }
 </style>
 </head>
-<body style="background-color:white;padding: 0;margin: 0px; height: 100px; width: 100%; overflow:hidden;">
+<body style="background-color:white;padding: 0;margin: 0px; height: 100px; width: 100%;">
 
   <div class="main" style="height: 100% width: 100%;">
 <div class="side-bar" style="width: 25%">
@@ -189,7 +189,9 @@ span {
     <div><img src="images/aviator.png" alt="Avatar" ></div>
   </div>
   <div class="conversation-container"></div>
-  <div class="msg_type"><input type="text" name="input" placeholder="type a message.." autocomplete="off" autofocus></input></div>
+  <div class="msg_type">
+    <input type="text" name="input" placeholder="type a message.." autocomplete="off"></input>
+</div>
 </div>
 </div>
 

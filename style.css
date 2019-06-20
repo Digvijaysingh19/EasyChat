@@ -2,7 +2,7 @@ body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #34495e;
+  background: #191919;
 }
 .box{
   width: 300px;
@@ -11,12 +11,13 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: #191919;
+  background: #111111;
   text-align: center;
+  border-radius: 30%;
 }
 .box h1{
   color: white;
-  text-transform: uppercase;
+ 
   font-weight: 500;
 }
 .box input[type = "text"],.box input[type = "password"]{
@@ -35,7 +36,7 @@ body{
 }
 .box input[type = "text"]:focus,.box input[type = "password"]:focus{
   width: 280px;
-  border-color: #2ecc71;
+  border-color: #F99E15;
 }
 .box input[type = "submit"]{
   border:0;
@@ -43,7 +44,7 @@ body{
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #2ecc71;
+  border: 2px solid #F99E15;
   padding: 14px 40px;
   outline: none;
   color: white;
@@ -52,5 +53,5 @@ body{
   cursor: pointer;
 }
 .box input[type = "submit"]:hover{
-  background: #2ecc71;
+  background: #F99E15;
 }

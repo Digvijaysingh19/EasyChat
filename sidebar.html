@@ -31,7 +31,7 @@
   background-color:#f1f4df;
   left: 60%;
 }
-input[type=text] {
+input[type=search] {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -44,13 +44,24 @@ input[type=text] {
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
 }
+input[type=text] {
+  width: 104%;
+  box-sizing: border-box;
+  border: 1.4px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white; 
+  padding-top: 12px;
+  padding-right: 20px;
+  padding-bottom: 12px;
+  padding-left: 40px;
+}
 img {
   border-radius: 50%;
   width:45px
 }
 .contact{
     text-align: center;
-    border: 1px solid #d7d7d7;
     height: 60px;
 }
 ul {
@@ -106,7 +117,7 @@ span {
   }
 
   .conversation-container {
-  height:90%;
+  height:51.6%;
   box-shadow: inset 0 10px 10px -10px #000000;
   overflow-x: hidden;
   padding: 0 16px;
@@ -124,8 +135,9 @@ span {
   }
 </style>
 </head>
-<body style="background-color:white;height: 100vh;padding: 0;margin: 0px;">
-  <div class="main" style="height: 100%">
+<body style="background-color:white;padding: 0;margin: 0px; height: 100px; width: 100%; overflow:hidden;">
+
+  <div class="main" style="height: 100% width: 100%;">
 <div class="side-bar" style="width: 25%">
 <div class="flex-container" style="float: left; width: 100%">
   <div =class="dropdown">
@@ -133,7 +145,7 @@ span {
     <img src="images/aviator.png" alt="Avatar" >
   </div>
   
-  <div class="dropdown" style="float: right;margin-left:auto;">
+  <div class="dropdown" style="float:right;margin-left:auto;">
       <div><img src="images/setting-icon.png" alt="Setting"></div>
       <div class="dropdown-content">
       <a href="#" style="font-size: 18px">Account</a>
@@ -145,7 +157,7 @@ span {
 </div>
 <form id="form">
   <div class="search">
-            <input type="text" name="input" placeholder="search.." autocomplete="off"></input>
+            <input type="search" name="input" placeholder="search.." autocomplete="off"></input>
       </div>
 </form>
 <div class="contact">
@@ -171,11 +183,11 @@ span {
     </ul>
 </div>
 </div>
-<div class="message" style="width: 75%">
+<div class="message" style="width: 75%;">
   <div class="msg_head" style="width: 100%">
     <div><img src="images/aviator.png" alt="Avatar" ></div>
- 
-  </div><div class="conversation-container"></div>
+  </div>
+  <div class="conversation-container"></div>
   <div class="msg_type"><input type="text" name="input" placeholder="type a message.." autocomplete="off" autofocus></input></div>
 </div>
 </div>

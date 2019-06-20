@@ -10,14 +10,14 @@
   .side-bar{
     width:500px;
     height: 1000px; /* check for 100% later*/
-    background-color: #d7d7d7;
+    background-color: #10eaf0;
     position: relative;
     left:0%;
   }
 .flex-container {
   display: flex;
   width:500px;
-  background-color: DodgerBlue;
+  background-color:#24009c;
 }
 
 .flex-container > div {
@@ -28,7 +28,7 @@
 .message{
   width: 1500px;
   height: 1000px;
-  background-color: dimgray;
+  background-color:#f1f4df;
   left: 60%;
 }
 input[type=text] {
@@ -38,11 +38,11 @@ input[type=text] {
   border-radius: 4px;
   font-size: 16px;
   background-color: white;
- /* background-image: url('images/search-icon.png');
-  background-size:1%; 
+  background-image: url('images/Search-512.png');
+   background-size:8%; 
   background-position: 10px 10px; 
   background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;*/
+  padding: 12px 20px 12px 40px;
 }
 img {
   border-radius: 50%;
@@ -50,7 +50,7 @@ img {
 }
 .contact{
     text-align: center;
-    border: 2px solid #d7d7d7;
+    border: 1px solid #d7d7d7;
     height: 60px;
 }
 ul {
@@ -74,7 +74,7 @@ span {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #DCDCDC;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -120,43 +120,62 @@ span {
   .msg_head{
     width: 1320px;
     display: flex;
-  background-color: DodgerBlue;
+  background-color: #0028ff;
   }
 </style>
 </head>
-<body style="background-color:white;">
-  <div class="main">
-<div class="side-bar">
-<div class="flex-container">
-  <div><img src="images/aviator.png" alt="Avatar" ></div>
-  <div style="float:right;margin-left:auto;"><img src="images/request-icon.png" alt="request-icon"></div>
+<body style="background-color:white;height: 100vh;padding: 0;margin: 0px;">
+  <div class="main" style="height: 100%">
+<div class="side-bar" style="width: 25%">
+<div class="flex-container" style="float: left; width: 100%">
+  <div =class="dropdown">
+
+    <img src="images/aviator.png" alt="Avatar" >
+  </div>
+  
   <div class="dropdown" style="float: right;margin-left:auto;">
       <div><img src="images/setting-icon.png" alt="Setting"></div>
       <div class="dropdown-content">
-      <a href="#">account</a>
-      <a href="#">block lIst</a>
-      <a href="#">preference</a>
+      <a href="#" style="font-size: 18px">Account</a>
+      <a href="#" style="font-size: 18px">Block list</a>
+      <a href="#" style="font-size: 18px">Settings</a>
+      <a href="#" style="font-size: 18px">Logout</a>
       </div>
     </div>
 </div>
-<form id="form" class="search-bar">
-        <input type="text" name="input" placeholder="search.." autocomplete="off" autofocus></input>
+<form id="form">
+  <div class="search">
+            <input type="text" name="input" placeholder="search.." autocomplete="off"></input>
+      </div>
 </form>
 <div class="contact">
     <ul>
-        <li style="float: left;padding:5px;margin-right:auto;"><img src="images/aviator.png" alt="Avatar" >
-            <span>name</span></li>
-        
+        <li style="float: left;padding:5px;margin-right:auto;"><img src="images/aviator.png" alt="Avatar" align="middle">
+            <span>Digvijay</span>
+          </li>  
+          <br>
+          <br><br><br>
+        <li style="float:left;padding:5px;margin-right:auto; "><img src="images/aviator.png" alt="Avatar" align="middle" >
+            <span>Chinmey</span>
+          </li> 
+          <br>
+          <br><br><br>
+        <li style="float: left;padding:5px;margin-right:auto;"><img src="images/aviator.png" alt="Avatar" align="middle">
+            <span>Ketan</span>
+          </li>     
+           <br>
+          <br><br><br>
+        <li style="float: left;padding:5px;margin-right:auto;"><img src="images/aviator.png" alt="Avatar" align="middle">
+            <span>Yajan</span>
+          </li>    
     </ul>
 </div>
 </div>
-<div class="message">
-  <div class="msg_head">
+<div class="message" style="width: 75%">
+  <div class="msg_head" style="width: 100%">
     <div><img src="images/aviator.png" alt="Avatar" ></div>
-    <div class="dropdown" style="float: right;margin-left:auto;">
-        <div><img src="images/aviator.png" alt="Setting"></div>
-      </div>
-  </div><div class="conversation-container">hey</div>
+ 
+  </div><div class="conversation-container"></div>
   <div class="msg_type"><input type="text" name="input" placeholder="type a message.." autocomplete="off" autofocus></input></div>
 </div>
 </div>

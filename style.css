@@ -7,9 +7,20 @@
   background-color : #d7d7d7;
 }
   input[type=text] {
+    margin-top: 73%;
+    padding-top: 5px
+    padding-right:100%;
+        width: 100%;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        background-color: white;
+     }
+     input[type=searchtext] {
     margin-top: 0;
-    padding-top: 5px;
-      padding-bottom: 5px;
+    padding-top: 8px;
+      padding-bottom: 8px;
        padding-right: 120px;
         width: 100%;
         box-sizing: border-box;
@@ -75,31 +86,27 @@ img {
     display: block;
 }
 .message{
+    border: 1px solid #ccc;
+
   margin-top:3%;
   margin-left:35%; 
-  width:75%;
-  height: 365%;
+  width:55%;
+  height:98.5%;
   background-color : green;
-    margin-bottom: 3%;
-
 }
+.msg_head{
+    width: 100%;
+    display: flex;
+  background-color:grey;
+  }
 .grid-container {
   display: grid;
   grid-template-areas:  
     'left middle right' 
   grid-column-gap:0px;
 } 
-  .msg_type{
-  height: 40%;
-    width: 75%;
+  .msgtype{
+  height: 100%;
+    width: 100%;
   }
-  .msg_head{
-    width: 75%;
-    display: flex;
-  background-color: darkgrey;
-  }
-   .conversation-container {
-  height:86%;
-  overflow-x: hidden;
-
-}
+  

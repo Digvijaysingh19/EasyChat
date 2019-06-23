@@ -33,7 +33,7 @@
          <input type="text" name="input" placeholder="search.." ng-model="searchText"></input>
   </md-input-container>
     <div class="contact" ng-controller="people">
-        <li  class="contact-list "  ng-repeat="p in persons">
+        <li  class="contact-list "  ng-repeat="p in persons | filter: searchText">
   <img src="images/dd.icon" />
   <span>  {{p.name}}</span>
 </li>

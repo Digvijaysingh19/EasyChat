@@ -30,7 +30,7 @@
   </div>
   <form>
         <md-input-container>
-         <input type="text" name="input" placeholder="search.." ng-model="searchText"></input>
+         <input type="searchtext" name="input" placeholder="search.." ng-model="searchText"></input>
   </md-input-container>
     <div class="contact" ng-controller="people">
         <li  class="contact-list "  ng-repeat="p in persons | filter: searchText">
@@ -41,19 +41,18 @@
 </form>
 </div>
 </md-sidenav>
-
-    <div class="grid-container">
-
-<div class="message">
-  <div class="msg_head">
-    <div><img src="images/aviator.png" alt="Avatar" >
+      <div class="message">
+        <div class="msg_head">
+      <div><img src="images/aviator.png" alt="Avatar" ></div>
+    </div>
+  <div class="msgtype">
+    <input type="text" name="input" placeholder="type a message.." autocomplete="off" autofocus></input>
+</div>
     </div>
   </div>
-  <div class="conversation-container"></div>
-  <div class="msg_type">
-    <input type="text" name="input" placeholder="type a message.." autocomplete="off"></input>
-</div>
-</div>
+  
+
+
 
 
 

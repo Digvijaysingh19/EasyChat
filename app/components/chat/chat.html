@@ -1,7 +1,7 @@
 <div layout="column" ng-cloak style="height:100%" ng-app="myApp">
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left"
-                md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" style="height:100%; overflow-x: hidden; background-color: white; width:25%; max-height: -webkit-fill-available">
+                md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" style="max-height:100%; overflow-x: hidden; background-color: white; width:25%;height: -webkit-fill-available">
 <!-- header  -->
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
           <div class="md-toolbar-tools" style="padding:14px 0;">
@@ -49,13 +49,16 @@
         <div class="view">
           <span></span>
         </div>
+          <footer>
           <div class="msg_type">
             <div layout layout-align="start center">
               <div class="message-input" layout layout-align="start center">
-                <input class="input-box" type="text" name="input" placeholder="type a message.." autocomplete="off" autofocus></input>
+                <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus></input>
+              </form>
               </div>
             </div>
           </div>
+        </footer>
       </div>   
   </section>
 </div>

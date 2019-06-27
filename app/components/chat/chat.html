@@ -1,0 +1,61 @@
+<div layout="column" ng-cloak style="height:100%" ng-app="myApp">
+    <section layout="row" flex>
+      <md-sidenav class="md-sidenav-left" md-component-id="left"
+                md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" style="height:100%; overflow-x: hidden; background-color: white; width:25%; max-height: -webkit-fill-available">
+<!-- header  -->
+        <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
+          <div class="md-toolbar-tools" style="padding:14px 0;">
+            <div class="dropdown">
+              <button onclick="myFunction()" class="dropbtn">
+                <div class="avt">
+                
+                  <md-icon md-svg-src = 'static/images/person.svg'></md-icon>
+
+                </div>
+              </button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#home">PROFILE</a>
+                  <a href="#about">SETTINGS</a>
+                  <a href="#contact">LOGOUT</a>
+                </div>
+            </div>
+          </div>
+      </md-toolbar>
+<!-- headeer end -->
+<!-- search -->
+        <md-input-container style="margin-top: 13px; margin-bottom: -20px;">
+          <label>Search</label>
+            <input ng-model="search_contact" type="search"  name="input"  autocomplete="off">
+        </md-input-container>
+
+<!-- search end -->
+<!-- contact list -->
+        <md-content>
+          <md-list flex ng-controller="contact-list">
+            <md-list-item class="md-2-line" ng-repeat="c in contacts | filter: search_contact track by $index">
+              <img ng-src="static/images/avt.png" class="md-avatar" alt="{{todos[0].who}}">
+                <div class="md-list-item-text">
+                  <span>{{c.first_name}}</span> 
+                </div>
+            </md-list-item><md-divider style="width: 100%"></md-divider>
+          </md-list>
+        </md-content>
+      </md-sidenav>
+
+      <div class="msg">
+        <div class="msghead">
+          <div><md-icon md-svg-src = 'static/images/person.svg'></md-icon></div>
+        </div>
+        <div class="view">
+          <span></span>
+        </div>
+          <div class="msg_type">
+            <div layout layout-align="start center">
+              <div class="message-input" layout layout-align="start center">
+                <input class="input-box" type="text" name="input" placeholder="type a message.." autocomplete="off" autofocus></input>
+              </div>
+            </div>
+          </div>
+      </div>   
+  </section>
+</div>

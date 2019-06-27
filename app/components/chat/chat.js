@@ -1,27 +1,24 @@
-// // app.controller('AppCtrl', function ($scope, $mdSidenav) {
-// //     function buildToggler(componentId) {
-// // 	    return function() {
-// // 	   		$mdSidenav(componentId).toggle();
-// // 		};	
-// //     }
-// // });
-// function myFunction() {
-//                   document.getElementById("myDropdown").classList.toggle("show");
-//           }
+     var aa = angular.module('a', ['ngMaterial'])
 
-// // Close the dropdown if the user clicks outside of it
-//           window.onclick = function(event) {
-//                  if (!event.target.matches('.dropbtn')) {
-//                     var dropdowns = document.getElementsByClassName("dropdown-content");
-//                     var i;
-//                     for (i = 0; i < dropdowns.length; i++) {
-//                     var openDropdown = dropdowns[i];
-//                     if (openDropdown.classList.contains('show')) {
-//                     openDropdown.classList.remove('show');
-//                    }
-//               }
-//            
-//           }
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 app.controller('contact-list',function($scope,$http)
 {
   $scope.first_name = null;

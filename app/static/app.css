@@ -1,31 +1,23 @@
 
-/* type a message input*/
-/*input[type=text] {
-            padding-top: 6px;
-            padding-bottom: 6px;
-            width: 75%;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-            background-color: white;
-            position:fixed; top:630px;
-            border-color: rgba(0,0,0,0.12);
-            margin-left: 7px;
-            margin-right: 5px;
-     } 
-*/
+input[type=search] {
+            width: 70%;
+            
+            } 
+
 /*dropdown*/
 
 .dropbtn { 
+  color: rgb(255, 255, 255);
       background-color: transparent;
       padding: 10px;
       font-size: 16px;
       border: 0;
+      border-color: transparent;
       cursor: pointer;
 }
 .dropbtn:hover, .dropbtn:focus {
             background-color: transparent;
+            border-color: transparent;
 }
 .dropdown {
       position: relative;
@@ -43,7 +35,7 @@
 }
 
 .dropdown-content a {
-     color: black;
+    
      padding: 12px 16px;
      text-decoration: none;
      display: block;
@@ -80,18 +72,37 @@
    width: 28px;
    height: 28px;
  }
+.search-input {
+   box-shadow: 0 0.5px 2px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19);   
+   width: 90%;
+   height: 50px;
+   padding: 11px;
+   margin-left: 8px;
+   margin-right: 8px;
+   background-color: white;
+   border-radius: 50px;
+   margin-top: 4px;
+   margin-bottom: 6px;
+   border: 0.5px solid #ccc;
+}
 
 .message-input {
    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);   
    width: 95%;
    height: 50px;
-   padding: 15px;
+   padding: 14px;
    margin-left: 10px;
    background-color: white;
    border-radius: 50px;
    border: 0.5px solid #ccc;
 }
+.search-box {
 
+    background: transparent;
+    outline: none;
+    border: black;
+    width: 85%;
+  }
 .input-box {
 
     background: transparent;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
      var aa = angular.module('a', ['ngMaterial'])
 
 /* When the user clicks on the button, 
@@ -60,3 +61,10 @@ app.controller('contact-list',function($scope,$http)
                 // console.log(respones\)
           //     })
           // });
+=======
+app.controller('contact-list',function($scope,$http){
+  $http.get('/handlers/chat').then(function(response){
+    $scope.contacts = response.data; 
+    })
+});
+>>>>>>> 6562d182f44da79d9719bccb07f88fc86b075372

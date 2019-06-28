@@ -19,10 +19,20 @@ window.onclick = function(event) {
     }
   }
 }
-
+// Dropdown end
+// contact list js
 app.controller('contact-list',function($scope,$http){
   $http.get('/handlers/chat').then(function(response){
     $scope.contacts = response.data; 
     })
 });
+// contact list end
+// message send controller
+app.controller('sendtext',function($scope,$http){
+  // $http.get('/handlers/chat').then(function(response){
+  //   $scope.contacts = response.data; 
+  //   })
+});
+
+
 

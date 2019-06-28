@@ -61,13 +61,13 @@
           <span></span>
         </div> -->
           <footer>
-          <div class="msg_type">
+          <div class="msg_type" ng-controller="sendtext">
             <div layout layout-align="start center">
               <div class="message-input" layout layout-align="start center">
-                <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus></input>
+                <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus ng-model="typetext"></input>
 
               </div>
-              <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;">
+              <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;" ng-model="send">
           <md-icon  style="color: white;">send</md-icon>
         </md-button>
             </div>

@@ -46,7 +46,7 @@
             <md-list-item class="md-2-line" ng-repeat="c in contacts | filter: search_contact track by $index">
               <img ng-src="static/images/avt.png" class="md-avatar" alt="{{todos[0].who}}">
                 <div class="md-list-item-text">
-                  <span>{{c.first_name}}</span> 
+                  <span>{{c.key}}</span> 
                 </div>
             </md-list-item><md-divider style="width: 100%"></md-divider>
           </md-list>
@@ -77,7 +77,7 @@
                 <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus ng-model="typetext"></input>
 
               </div>
-              <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;" ng-model="send">
+              <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;" ng-click="send(typetext).reset()">
           <md-icon  style="color: white;">send</md-icon>
         </md-button>
             </div>

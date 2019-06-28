@@ -29,10 +29,14 @@ app.controller('contact-list',function($scope,$http){
 // contact list end
 // message send controller
 app.controller('sendtext',function($scope,$http){
-  // $http.get('/handlers/chat').then(function(response){
-  //   $scope.contacts = response.data; 
-  //   })
+  $scope.send = function (text) {   
+
+    var text_data = {
+
+        content: text,
+        user1_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwkM",
+        user2_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwoM"
+    };
+  var ss = JSON.stringify(text_data);
+  $http.post('/handlers/msgsent', ss)}
 });
-
-
-

@@ -1,8 +1,7 @@
 
 input[type=search] {
             width: 70%;
-            
-            } 
+              } 
 
 /*dropdown*/
 
@@ -115,3 +114,44 @@ footer {
    bottom: 5px;
    width: 75.8%;
 }
+/*messages view point css*/
+
+.receiving {
+  height: auto;
+  display: flex;
+  width: 50%;
+  border: 0.5px solid #dedede;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 9px;
+  margin-left: 10px;
+  padding-left: 12px;
+  padding-bottom: 5px;
+  padding-top: 2px;
+}
+.sending {
+
+  max-width: 50%;
+  border: 0.5px solid #dedede;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 9px;
+  margin-left: 475px;
+  padding-left: 10px;
+  padding-right: 12px;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 2px;
+}
+/*
+  .time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}*/
+
+/* message view point end */

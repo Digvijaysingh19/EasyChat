@@ -14,8 +14,8 @@ app.config(function($locationProvider, $routeProvider) {
     // controller: 'AppCtrl'
     controller: 'contact-list'
   })
-  .when('/', {
-  	template: 'blank'
-  })
+  // .when('/', {
+  // 	template: 'blank'
+  // })
   // .otherwise({redirectTo: '/view1'});
 });

@@ -37,11 +37,56 @@
   <script src="lib/angular-material/angular-material.js"></script>
   <script src="lib/angular-animate/angular-animate.js"></script>
   <script src="lib/angular-material-icons/angular-material-icons.js"></script>
-  
-
 
 <!--   <script src="core/version/version.js"></script>
   <script src="core/version/version-directive.js"></script>
   <script src="core/version/interpolate-filter.js"></script> -->
+
+  <!-- The Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCeI0rKLoFn1AWyN-s6T-1EiBeYuNwdneo",
+      authDomain: "easychat-245110.firebaseapp.com",
+      databaseURL: "https://easychat-245110.firebaseio.com",
+      projectId: "easychat-245110",
+      storageBucket: "easychat-245110.appspot.com",
+      messagingSenderId: "890271128242",
+      appId: "1:890271128242:web:abead19df6fdcfa5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: '/chat.html',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      // // Terms of service url/callback.
+      // tosUrl: '<your-tos-url>',
+      // // Privacy policy url/callback.
+      // privacyPolicyUrl: function() {
+      //   window.location.assign('<your-privacy-policy-url>');
+      // }
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+  <div id="firebaseui-auth-container"></div>
 </body>
 </html>

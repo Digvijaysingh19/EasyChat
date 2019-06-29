@@ -2,7 +2,7 @@
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" style="max-height:100%; overflow-x: hidden; background-color: white; width:25%;height: -webkit-fill-available">
-<!-- header  -->
+<!-- sidnav header  -->
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
           <div class="md-toolbar-tools" style="padding:14px 0;">
             <div class="dropdown">
@@ -21,46 +21,74 @@
             </div>
           </div>
       </md-toolbar>
-<!-- headeer end -->
+<!-- sidenav headeer end -->
 <!-- search -->
             <div layout layout-align="start center">
               <div class="search-input" layout layout-align="start center">
                 <input class="search-box" type="text" name="input" placeholder="Search..." autocomplete="off" autofocus></input>
                <!--     <md-button class="md-fab md-mini md-primary" style="background-color: transparent; width: 40px; height: 24px;"> -->
                    <md-icon  style="color: grey;">search</md-icon>
-        </md-button>
+        <!-- </md-button> -->
               </div>
               
             </div>
-        
-        <!-- <md-input-container style="margin-top: 13px; margin-bottom: -20px;">
-          <label>Search</label>
-            <input ng-model="search_contact" type="search"  name="input"  autocomplete="off">
-
-        </md-input-container> -->
-
+            <md-divider style="width: 100%"></md-divider>
 <!-- search end -->
 <!-- contact list -->
         <md-content>
           <md-list flex ng-controller="contact-list">
-            <md-list-item class="md-2-line" ng-repeat="c in contacts | filter: search_contact track by $index">
+            <md-list-item class="md-2-line"  ng-click="user2()" ng-repeat="c in contacts | filter: search_contact track by $index">
               <img ng-src="static/images/avt.png" class="md-avatar" alt="{{todos[0].who}}">
                 <div class="md-list-item-text">
                   <span>{{c.email}}</span> 
                 </div>
+                <md-divider style="width: 100%"></md-divider>
             </md-list-item>
             <md-divider style="width: 100%"></md-divider>
           </md-list>
         </md-content>
       </md-sidenav>
-
+<!-- contact list end -->
       <div class="msg">
-        <div class="msghead">
+        <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
+          <div class="md-toolbar-tools" style="padding-left:14px">
           <div><md-icon md-svg-src = 'static/images/person.svg'></md-icon></div>
-        </div>
-        <div layout="column" >
+          </div>
+        </md-toolbar>
+        <md-content>
           <div class="chats">
+        <div layout="column">
+    
+          
                 
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+
+            <div class="sending">
+              <p>Hey! I'm fine. Thanks for asking!</p>
+            </div>
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+
+            <div class="sending">
+              <p>Hey! I'm fine. Thanks for asking!</p>
+            </div>
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+
+            <div class="sending">
+              <p>Hey! I'm fine. Thanks for asking!</p>
+            </div>
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+            
+            <div class="sending">
+              <p>Hey! I'm fine. Thanks for asking!</p>
+            </div>
             <div class="receiving">
               <span>Hello. How are you ?</span>
             </div>
@@ -94,19 +122,21 @@
             </div>
  
         </div>
-          <footer>
+         </div>
+        </md-content>
+          <!-- <footer>
           <div class="msg_type" ng-controller="sendtext">
             <div layout layout-align="start center">
               <div class="message-input" layout layout-align="start center">
                 <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus ng-model="typetext"></input>
 
-              </div>
+              </div>  
               <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;" ng-click="send(typetext).reset()">
           <md-icon  style="color: white;">send</md-icon>
         </md-button>
             </div>
-          </div>
-        </footer>
-      </div>   
+            </div>
+        </footer> -->
+        </div>       
   </section>
 </div>

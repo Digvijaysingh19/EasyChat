@@ -81,6 +81,8 @@ input[type=search] {
 /*converstaion block*/
 
  .msg{
+     max-height: 50%;
+     height: -webkit-fill-available;
      flex-direction: column;
      width: 80%;
      background-color: #e0f7fa7a;
@@ -155,14 +157,13 @@ footer {
   padding-bottom: 5px;
   padding-top: 2px;
 }
-.loginBox{
-  max-width:  90%;
-  width: 500px
-}
 
-/*.chats{*/
-  /*height:max-content;*/
-  /*height: -webkit-fill-available;*/
+.chats{
+  /* background-color: rgb(223, 200, 200); */
+  /* height:max-content; */
+  /* max-height: 50%; */
+  /* height: -webkit-fill-available; */
+  height: 600px;
   
 }
 /*

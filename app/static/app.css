@@ -79,13 +79,10 @@ input[type=search] {
 
 /*converstaion block*/
 
- .msg{
-     max-height: 50%;
-     height: -webkit-fill-available;
-     flex-direction: column;
-     width: 80%;
-     /* background-color: #e0f7fa7a; */
- } 
+.message{
+        height: 90vh;
+    overflow-y: scroll;
+} 
  .msghead{
        padding-top: 20px;
     padding-bottom: 20px;
@@ -120,10 +117,10 @@ input[type=search] {
   }
 
 footer {
-  background-color: transparent;
+  background-color: white;
    position: absolute;
    bottom: 5px;
-   width: 75.8%;
+   width: 80%;
 }
 /*messages view point css*/
 
@@ -156,13 +153,23 @@ footer {
   padding-bottom: 5px;
   padding-top: 2px;
 }
+.selected {
+  background-color:#00838F;
+  color: white;
+}
+/* .noselected {
+  border: 1px solid pink;
+} */
 
 .chats{
+    /* max-height: 604px; */
+    /* height: -webkit-fill-available; */
   /* background-color: rgb(223, 200, 200); */
   /* height:max-content; */
   /* max-height: 50%; */
   /* height: -webkit-fill-available; */
-  height: 600px;
+  
+  /* max-height: 30%; */
   
 }
 /*

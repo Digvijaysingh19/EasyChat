@@ -1,7 +1,7 @@
 from models import *
 import json
 
-def post_info(self):
+def post_info():
     data = UserProfile.query().fetch()
     row = []
     for d in data:
@@ -9,6 +9,11 @@ def post_info(self):
             'first_name': d.first_name,
             'last_name' : d.last_name,
             'key' : d.key.urlsafe(),
-            'username' : d.username
+            'email' : d.email
         })
     self.response.write(json.dumps(row))
+
+def post_data(user_email):
+    user = UserProfile()
+    user.email = user_email
+    user.put()

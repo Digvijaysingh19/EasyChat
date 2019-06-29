@@ -45,7 +45,6 @@ input[type=search] {
 
 /*search input*/
 .search-box {
-
     background: transparent;
     outline: none;
     border: black;
@@ -85,7 +84,7 @@ input[type=search] {
      height: -webkit-fill-available;
      flex-direction: column;
      width: 80%;
-     background-color: #e0f7fa7a;
+     /* background-color: #e0f7fa7a; */
  } 
  .msghead{
        padding-top: 20px;

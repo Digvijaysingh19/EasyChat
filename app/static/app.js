@@ -19,3 +19,5 @@ app.config(function($locationProvider, $routeProvider) {
   })
   // .otherwise({redirectTo: '/view1'});
 });
+
+

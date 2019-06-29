@@ -43,6 +43,30 @@ input[type=search] {
 
 .show {display: block;}
 
+/*search input*/
+.search-box {
+
+    background: transparent;
+    outline: none;
+    border: black;
+    width: 85%;
+  }
+
+.search-input {
+   box-shadow: 0 0.5px 2px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19);   
+   width: 90%;
+   height: 50px;
+   padding: 11px;
+   margin-left: 8px;
+   margin-right: 8px;
+   background-color: white;
+   border-radius: 50px;
+   margin-top: 4px;
+   margin-bottom: 6px;
+   border: 0.5px solid #ccc;
+}
+
+
 /*contact column*/
 
 .contact{
@@ -53,6 +77,9 @@ input[type=search] {
      border: 2px solid #ccc;
      display: block;
 }
+
+/*converstaion block*/
+
  .msg{
      flex-direction: column;
      width: 80%;
@@ -71,23 +98,10 @@ input[type=search] {
    width: 28px;
    height: 28px;
  }
-.search-input {
-   box-shadow: 0 0.5px 2px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19);   
-   width: 90%;
-   height: 50px;
-   padding: 11px;
-   margin-left: 8px;
-   margin-right: 8px;
-   background-color: white;
-   border-radius: 50px;
-   margin-top: 4px;
-   margin-bottom: 6px;
-   border: 0.5px solid #ccc;
-}
 
 .message-input {
    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);   
-   width: 95%;
+   width: 100%;
    height: 50px;
    padding: 14px;
    margin-left: 10px;
@@ -95,13 +109,7 @@ input[type=search] {
    border-radius: 50px;
    border: 0.5px solid #ccc;
 }
-.search-box {
 
-    background: transparent;
-    outline: none;
-    border: black;
-    width: 85%;
-  }
 .input-box {
 
     background: transparent;
@@ -109,7 +117,9 @@ input[type=search] {
     border: black;
     width: 100%;
   }
+
 footer {
+  background-color: transparent;
    position: absolute;
    bottom: 5px;
    width: 75.8%;
@@ -117,9 +127,11 @@ footer {
 /*messages view point css*/
 
 .receiving {
+  word-break: break-all;
   height: auto;
   display: flex;
-  width: 50%;
+  max-width: 50%;
+  width: max-content;
   border: 0.5px solid #dedede;
   background-color: white;
   border-radius: 10px;
@@ -128,20 +140,30 @@ footer {
   padding-left: 12px;
   padding-bottom: 5px;
   padding-top: 2px;
+  padding-right: 12px;
 }
 .sending {
-
+  word-break: break-all;
   max-width: 50%;
+  width: max-content;
+  margin-left: auto;
   border: 0.5px solid #dedede;
   background-color: white;
   border-radius: 10px;
-  margin-top: 9px;
-  margin-left: 475px;
   padding-left: 10px;
   padding-right: 12px;
-  margin-right: 10px;
   padding-bottom: 5px;
   padding-top: 2px;
+}
+.loginBox{
+  max-width:  90%;
+  width: 500px
+}
+
+/*.chats{*/
+  /*height:max-content;*/
+  /*height: -webkit-fill-available;*/
+  
 }
 /*
   .time-right {

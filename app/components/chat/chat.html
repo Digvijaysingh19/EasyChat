@@ -26,7 +26,7 @@
             <div layout layout-align="start center">
               <div class="search-input" layout layout-align="start center">
                 <input class="search-box" type="text" name="input" placeholder="Search..." autocomplete="off" autofocus></input>
-                   <md-button class="md-fab md-mini md-primary" style="background-color: transparent; width: 40px; height: 24px;">
+               <!--     <md-button class="md-fab md-mini md-primary" style="background-color: transparent; width: 40px; height: 24px;"> -->
                    <md-icon  style="color: grey;">search</md-icon>
         </md-button>
               </div>
@@ -48,7 +48,8 @@
                 <div class="md-list-item-text">
                   <span>{{c.key}}</span> 
                 </div>
-            </md-list-item><md-divider style="width: 100%"></md-divider>
+            </md-list-item>
+            <md-divider style="width: 100%"></md-divider>
           </md-list>
         </md-content>
       </md-sidenav>
@@ -58,18 +59,41 @@
           <div><md-icon md-svg-src = 'static/images/person.svg'></md-icon></div>
         </div>
         <div layout="column" >
-        <div class="receiving">
-  <p>Hello. How are you ?</p>
-</div>
+          <div class="chats">
+                
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
 
-<div class="sending">
-    <p align=right>Hey! I'm fine. Thanks for asking!</p>
-  <!-- <span class="time-left">11:01</span> -->
-</div>
-  </div>
-        <!-- <div class="view">
-          <span></span>
-        </div> -->
+            <div class="sending">
+              <p>Hey! I'm fine. Thanks for asking!</p>
+            </div>
+  
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+            
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+
+            <div class="sending">
+              <p>Hey! I'm fine. Thanks for asking!</p>
+            </div>
+  
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+       
+            <div class="receiving">
+              <span>Hello. How are you ?</span>
+            </div>
+
+            <div class="sending">
+              <p>Hey! I'm fine. Thanks for asking!</p>
+            </div>
+ 
+        </div>
           <footer>
           <div class="msg_type" ng-controller="sendtext">
             <div layout layout-align="start center">

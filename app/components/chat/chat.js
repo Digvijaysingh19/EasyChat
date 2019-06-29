@@ -40,3 +40,5 @@ app.controller('sendtext',function($scope,$http){
   var ss = JSON.stringify(text_data);
   $http.post('/handlers/msgsent', ss)}
 });
+
+// signup js

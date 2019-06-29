@@ -1,0 +1,48 @@
+<div layout="column" ng-cloak style="height:100%" ng-app="myApp">
+
+<body ng-cloak ng-controller="signup">
+
+  <div layout="column" layout-align="center center" layout-fill="layout-fill">
+    <div layout="column" class="signupBox md-whiteframe-z1">
+      <md-toolbar>
+
+        <h2 class="md-toolbar-tools" style="background-color:#00838F;"><span>Signup</span></h2>
+      </md-toolbar>
+      <form name="signupForm">
+        <md-content layout="column" class="md-padding">
+          <md-input-container>
+            <label>Firstname</label>
+            <input required type="text" ng-model="signupModel.firstname" name="firstname" />
+            <div ng-messages="signupForm.firstname.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Lastname</label>
+            <input required type="text" ng-model="signupModel.lastname" name="lastname" />
+            <div ng-messages="signupForm.lastname.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Username</label>
+            <input required type="text" ng-model="signupModel.username" name="username" />
+            <div ng-messages="signupForm.username.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Email-ID</label>
+            <input required type="email" ng-model="signupModel.email" name="email" />
+            <div ng-messages="signupForm.email.$error" role="alert">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <div layout="row" layout-align="center center">
+            <md-button type="submit" class="md-raised md-primary"  style="background-color:#00838F;">Signup</md-button>
+          </div>
+        </md-content>
+      </form>
+    </div>
+  </div></div>
+</body>

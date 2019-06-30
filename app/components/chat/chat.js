@@ -25,12 +25,16 @@ app.controller('contact-list',function($scope,$http){
   $http.get('/handlers/chat').then(function(response){
     $scope.contacts = response.data; 
     })
+    $scope.selected = null;
+    $scope.user2 = function(c) {
+      $scope.selected = c;
+    }
 });
 // contact list end
 // message send controller
 app.controller('sendtext',function($scope,$http){
   $scope.send = function (text) {   
-
+    
     var text_data = {
 
         content: text,
@@ -40,3 +44,5 @@ app.controller('sendtext',function($scope,$http){
   var ss = JSON.stringify(text_data);
   $http.post('/handlers/msgsent', ss)}
 });
+
+// signup js

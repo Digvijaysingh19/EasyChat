@@ -18,6 +18,7 @@ class SignUp(webapp2.RequestHandler):
 			last_name = req.get('lastname'),
 			username = req.get('username'),
 			email = users.get_current_user().email(),
+			user_id = users.get_current_user().user_id(),
 			profile_pic = req.get('dp'))
 
 		user.put()
@@ -31,7 +32,7 @@ class MainPage(webapp2.RequestHandler):
 	def post(self):
 		req = json.loads(self.request.body)
 
-		key1 = ndb1.Key(urlsafe=req.get('user1_key'))
+		key1 = ndb.Key(urlsafe=req.get('user1_key'))
 		key2 = ndb.Key(urlsafe=req.get('user2_key'))
 		
 		#Checks if there is a cursor in the request
@@ -92,12 +93,15 @@ class Main(webapp2.RequestHandler):
 		user = users.get_current_user()
 		user_email = user.email()
 		user_id = user.user_id()
-		print(user_email)
-		print(user_id)
 		check_user = UserProfile.query(UserProfile.email == user_email).get()
 		if not check_user:
-			post_data(user_email)
-		self.redirect("/chat#!/chat")
+			post_data(user_email,user_id)
+		current_user = post_current_user(user_email)
+		user_key = [{
+			"user1_key" : current_user
+		}]
+		self.response.write(json.dumps(user_key))
+		# self.redirect("/chat#!/chat")
 		
 app = webapp2.WSGIApplication([
    webapp2.Route('/', Main),

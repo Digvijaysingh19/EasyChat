@@ -35,7 +35,7 @@ class MainPage(webapp2.RequestHandler):
 	def post(self):
 		req = json.loads(self.request.body)
 
-		key1 = current_user.post_current_user()
+		key1 = post_current_user(current_user.email())
 		key2 = ndb.Key(urlsafe=req.get('user2_key'))
 		
 		#Checks if there is a cursor in the request
@@ -69,7 +69,7 @@ class Message(webapp2.RequestHandler):
 	def post(self):
 		req = json.loads(self.request.body)
 		chat = Chats()
-		key1 = current_user.post_current_user()
+		key1 = post_current_user(current_user.email())
 		key2 = ndb.Key(urlsafe=req.get('user2_key'))
 		chat.populate(
 			sender_key = key1,
@@ -81,6 +81,7 @@ class Index(webapp2.RequestHandler):
 	def get(self):
 		json_dict = post_info(current_user)
 		self.response.write(json_dict)
+		print(json_dict)
 
 class Main(webapp2.RequestHandler):
 	def get(self):
@@ -90,10 +91,10 @@ class Main(webapp2.RequestHandler):
 		if not check_user:
 			post_data(user_email,current_user.user_id())
 		current_user_key = post_current_user(user_email)
-		user_key = [{
+		user_key = {
 			"user1_key" : current_user_key,
 			"user1_email" : user_email
-		}]
+		}
 		self.response.write(json.dumps(user_key))
 		self.redirect("/chat#!/chat")
 		

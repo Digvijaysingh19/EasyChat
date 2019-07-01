@@ -20,8 +20,12 @@ window.onclick = function(event) {
   }
 }
 // Dropdown end
+
 // contact list js
 app.controller('contact-list',function($scope,$http){
+  $http.get('/').then(function(response){
+    $scope.user = response.data; 
+    })
   $http.get('/handlers/chat').then(function(response){
     $scope.contacts = response.data; 
     })

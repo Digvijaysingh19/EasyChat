@@ -97,9 +97,10 @@ class Main(webapp2.RequestHandler):
 		if not check_user:
 			post_data(user_email,user_id)
 		current_user = post_current_user(user_email)
-		user_key = [{
-			"user1_key" : current_user
-		}]
+		user_key = { 
+			"user1_key" : current_user,
+			"email" : user_email
+		}
 		self.response.write(json.dumps(user_key))
 		# self.redirect("/chat#!/chat")
 		

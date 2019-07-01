@@ -1,7 +1,8 @@
 <div layout="column" ng-cloak style="height:100%">
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left"
-                md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" style="max-height:100%; overflow-x: hidden; background-color: white; width:25%;height: -webkit-fill-available">
+                md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" 
+                style="max-height:100%; overflow-x: hidden; background-color: white; width:25%;height: -webkit-fill-available">
 <!-- sidnav header  -->
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
           <div class="md-toolbar-tools" style="padding:14px 0;">
@@ -11,13 +12,13 @@
                  <md-icon md-svg-src = 'static/images/person.svg'></md-icon>
                 </div>
               </button>
-                <div id="myDropdown" class="dropdown-content">
+                <div id="myDropdown" class="dropdown-content" >
                   <!-- <a href="#home">PROFILE</a>
                   <a href="#about">SETTINGS</a> -->
                   <a href="#contact">LOGOUT</a>
                 </div>
             </div>
-            <p>User</p>
+            <p>{{user.email}}</p>
           </div>
       </md-toolbar>
 <!-- sidenav headeer end -->
@@ -48,7 +49,7 @@
         </md-content>
       </md-sidenav>
 <!-- contact list end -->
-      <div style="width:100%">
+      <div ng-show="selected.email" style="width:100%">
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
           <div class="md-toolbar-tools" style="padding-left:14px">
           <div><md-icon md-svg-src = 'static/images/person.svg'></md-icon></div>
@@ -59,8 +60,7 @@
         <!-- <md-content > -->
           <!-- <div> -->
         <div style="
-        height: 82vh;
-    overflow-y: scroll;">
+        height: 82vh;overflow-y: scroll;">
             <div class="receiving">
               <span>Hello. How are you ?</span>
             </div>

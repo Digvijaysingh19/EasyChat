@@ -23,8 +23,12 @@ window.onclick = function(event) {
 
 // contact list js
 app.controller('contact-list',function($scope,$http){
-  $http.get('/').then(function(response){
+  $http.get('/handlers/current_user').then(function(response){
+    debugger
     $scope.user = response.data; 
+    // if($scope.user){
+    //   window.location.assign("/chat#!/chat")
+    // }
     })
   $http.get('/handlers/chat').then(function(response){
     $scope.contacts = response.data; 
@@ -39,13 +43,17 @@ app.controller('contact-list',function($scope,$http){
   $http.post('/handlers/mainpage', ss)
     }
 });
+
+app.controller('index-controller',function(){
+  console.log('hie')
+  debugger
+  window.location.assign("/chat#!/chat")
+})
 // contact list end
 // message send controller
 app.controller('sendtext',function($scope,$http){
   $scope.send = function (text) {   
-    
     var text_data = {
-
         content: text,
         user1_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwkM",
         user2_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwoM"

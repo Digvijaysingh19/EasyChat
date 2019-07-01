@@ -8,14 +8,15 @@ var app = angular.module('myApp', [
   'ngAria'
 ])
 app.config(function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+  // $locationProvider.hashPrefix('!');
   $routeProvider.when('/chat', {
   	templateUrl: 'components/chat/chat.html',
     // controller: 'AppCtrl'
     controller: 'contact-list'
   })
   .when('/', {
-  	template: 'blank'
+    template: 'blank',
+    controller: 'index-controller'
   })
   // .otherwise({redirectTo: '/view1'});
 });

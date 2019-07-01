@@ -6,33 +6,31 @@ import json
 from methods import *
 from google.appengine.api import users
 
-current_user = users.get_current_user()
+# """[The SignUp class handles the new account creations and redirects to the
+# 	main page after successful account creation]
+# """						
+# class SignUp(webapp2.RequestHandler):
+# 	def post(self):
+# 		req = json.loads(self.request.body)
+# 		user = UserProfile()
+# 		user.populate(
+# 			first_name = req.get('firstname'),
+# 			last_name = req.get('lastname'),
+# 			username = req.get('username'),
+# 			email = current_user.email(),
+# 			user_id = current_user.user_id(),
+# 			profile_pic = req.get('dp'))
 
-
-"""[The SignUp class handles the new account creations and redirects to the
-	main page after successful account creation]
-"""						
-class SignUp(webapp2.RequestHandler):
-	def post(self):
-		req = json.loads(self.request.body)
-		user = UserProfile()
-		user.populate(
-			first_name = req.get('firstname'),
-			last_name = req.get('lastname'),
-			username = req.get('username'),
-			email = current_user.email(),
-			user_id = current_user.user_id(),
-			profile_pic = req.get('dp'))
-
-		user.put()
-		self.response.write({"Message" : "SignUp Successful."})
-		time.sleep(1)
-		post_info(self)
+# 		user.put()
+# 		self.response.write({"Message" : "SignUp Successful."})
+# 		time.sleep(1)
+# 		post_info(self)
 
 """[The MainPage class handles all the operations happening on the main page of the app]
 """					
 class MainPage(webapp2.RequestHandler):
 	def post(self):
+		current_user = users.get_current_user()
 		req = json.loads(self.request.body)
 
 		key1 = post_current_user(current_user.email())
@@ -67,6 +65,7 @@ class MainPage(webapp2.RequestHandler):
 """
 class Message(webapp2.RequestHandler):
 	def post(self):
+		current_user = users.get_current_user()
 		req = json.loads(self.request.body)
 		chat = Chats()
 		key1 = post_current_user(current_user.email())
@@ -79,28 +78,37 @@ class Message(webapp2.RequestHandler):
 
 class Index(webapp2.RequestHandler):
 	def get(self):
+		current_user = users.get_current_user()
 		json_dict = post_info(current_user)
 		self.response.write(json_dict)
 		print(json_dict)
 
 class Main(webapp2.RequestHandler):
 	def get(self):
+		current_user = users.get_current_user()
 		print(current_user)
 		user_email = current_user.email()
 		check_user = UserProfile.query(UserProfile.email == user_email).get()
 		if not check_user:
 			post_data(user_email,current_user.user_id())
+		self.redirect("/chat")
+		
+class CurrentUser(webapp2.RequestHandler):
+	def get(self):
+		current_user = users.get_current_user()
+		print(current_user)
+		user_email = current_user.email()
 		current_user_key = post_current_user(user_email)
 		user_key = {
 			"user1_key" : current_user_key,
 			"user1_email" : user_email
 		}
 		self.response.write(json.dumps(user_key))
-		self.redirect("/chat#!/chat")
-		
+
 app = webapp2.WSGIApplication([
    webapp2.Route('/', Main),
-  ('/handlers/signup', SignUp),
+  ('/handlers/current_user', CurrentUser),
+#   ('/handlers/signup', SignUp),
   ('/handlers/msgsent', Message),
   ('/handlers/mainpage', MainPage),
   ('/handlers/chat', Index)

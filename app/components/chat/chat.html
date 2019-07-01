@@ -49,6 +49,16 @@
         </md-content>
       </md-sidenav>
 <!-- contact list end -->
+      <div ng-hide="selected.email" style="width:75%; background-color: white">
+        <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
+          </md-toolbar>
+          <div class="welcome" layout="row" flex>
+            <img src="static/images/chatt.gif" style="opacity: 0.5;"> 
+            <p style="font-size:30px;margin-top: 280px;color:grey">WELCOME</p>
+
+          </div>
+      </div>
+      <div ng-show="selected.email" style="width:75%">
       <div ng-show="selected.email" style="width:95%;max-width: 100%;">
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
           <div class="md-toolbar-tools" style="padding-left:20px">

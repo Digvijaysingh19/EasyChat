@@ -1,8 +1,8 @@
 from models import *
 import json
 
-def post_info():
-    data = UserProfile.query().fetch()
+def post_info(self):
+    data = UserProfile.query(UserProfile.email != self.email()).fetch()
     row = []
     for d in data:
         row.append({
@@ -13,13 +13,13 @@ def post_info():
         })
     self.response.write(json.dumps(row))
 
-def post_data(user_email, user_id):
+def post_data(self):
     user = UserProfile()
-    user.email = user_email
-    user.user_id = user_id 
+    user.email = self.email()
+    user.user_id = self.user_id() 
     user.put()
 
-def post_current_user(user_email):
-    user1_key = UserProfile.query(UserProfile.email == user_email).fetch(keys_only=True)
+def post_current_user(self):
+    user1_key = UserProfile.query(UserProfile.email == self.email()).fetch(keys_only=True)
     print(user1_key[0].urlsafe())
     return user1_key[0].urlsafe()

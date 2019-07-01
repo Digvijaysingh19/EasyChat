@@ -6,7 +6,7 @@ import json
 from methods import *
 from google.appengine.api import users
 
-user = users.get_current_user()
+current_user = users.get_current_user()
 
 """[The SignUp class handles the new account creations and redirects to the
 	main page after successful account creation]
@@ -19,8 +19,8 @@ class SignUp(webapp2.RequestHandler):
 			first_name = req.get('firstname'),
 			last_name = req.get('lastname'),
 			username = req.get('username'),
-			email = users.get_current_user().email(),
-			user_id = users.get_current_user().user_id(),
+			email = current_user.email(),
+			user_id = current_user.user_id(),
 			profile_pic = req.get('dp'))
 
 		user.put()
@@ -34,7 +34,7 @@ class MainPage(webapp2.RequestHandler):
 	def post(self):
 		req = json.loads(self.request.body)
 
-		key1 = user.post_current_user()
+		key1 = current_user.post_current_user()
 		key2 = ndb.Key(urlsafe=req.get('user2_key'))
 		
 		#Checks if there is a cursor in the request
@@ -68,7 +68,7 @@ class Message(webapp2.RequestHandler):
 	def post(self):
 		req = json.loads(self.request.body)
 		chat = Chats()
-		key1 = user.post_current_user()
+		key1 = current_user.post_current_user()
 		key2 = ndb.Key(urlsafe=req.get('user2_key'))
 		chat.populate(
 			sender_key = key1,
@@ -78,18 +78,18 @@ class Message(webapp2.RequestHandler):
 
 class Index(webapp2.RequestHandler):
 	def get(self):
-		user.post_info()
+		current_user.post_info()
 
 class Main(webapp2.RequestHandler):
 	def get(self):
-		user_email = user.email()
+		user_email = current_user.email()
 		check_user = UserProfile.query(UserProfile.email == user_email).get()
 		if not check_user:
-			print("user",user)
-			user.post_data()
-		current_user = user.post_current_user()
+			print("user",current_user)
+			current_user.post_data()
+		current_user_key = current_user.post_current_user()
 		user_key = [{
-			"user1_key" : current_user,
+			"user1_key" : current_user_key,
 			"user1_email" : user_email
 		}]
 		self.response.write(json.dumps(user_key))

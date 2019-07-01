@@ -32,6 +32,11 @@ app.controller('contact-list',function($scope,$http){
     $scope.selected = null;
     $scope.user2 = function(c) {
       $scope.selected = c;
+      var contact_chat = {
+        user2_key : c
+      };
+  var ss = JSON.stringify(contact_chat);
+  $http.post('/handlers/mainpage', ss)
     }
 });
 // contact list end

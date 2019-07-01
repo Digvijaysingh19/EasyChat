@@ -8,6 +8,7 @@ from google.appengine.api import users
 
 current_user = users.get_current_user()
 
+
 """[The SignUp class handles the new account creations and redirects to the
 	main page after successful account creation]
 """						
@@ -78,16 +79,17 @@ class Message(webapp2.RequestHandler):
 
 class Index(webapp2.RequestHandler):
 	def get(self):
-		current_user.post_info()
+		json_dict = post_info(current_user)
+		self.response.write(json_dict)
 
 class Main(webapp2.RequestHandler):
 	def get(self):
+		print(current_user)
 		user_email = current_user.email()
 		check_user = UserProfile.query(UserProfile.email == user_email).get()
 		if not check_user:
-			print("user",current_user)
-			current_user.post_data()
-		current_user_key = current_user.post_current_user()
+			post_data(user_email,current_user.user_id())
+		current_user_key = post_current_user(user_email)
 		user_key = [{
 			"user1_key" : current_user_key,
 			"user1_email" : user_email

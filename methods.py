@@ -19,7 +19,7 @@ def post_data(self):
     user.user_id = self.user_id() 
     user.put()
 
-def post_current_user(user_email):
-    user1_key = UserProfile.query(UserProfile.email == user_email).fetch(keys_only=True)
+def post_current_user(self):
+    user1_key = UserProfile.query(UserProfile.email == self.email()).fetch(keys_only=True)
     print(user1_key[0].urlsafe())
     return user1_key[0].urlsafe()

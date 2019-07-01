@@ -1,7 +1,8 @@
 <div layout="column" ng-cloak style="height:100%">
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left"
-                md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" style="max-height:100%; overflow-x: hidden; background-color: white; width:25%;height: -webkit-fill-available">
+                md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" 
+                style="max-height:100%; overflow-x: hidden; background-color: white; width:25%;height: -webkit-fill-available">
 <!-- sidnav header  -->
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
           <div class="md-toolbar-tools" style="padding:14px 0;">
@@ -11,20 +12,20 @@
                  <md-icon md-svg-src = 'static/images/person.svg'></md-icon>
                 </div>
               </button>
-                <div id="myDropdown" class="dropdown-content">
+                <div id="myDropdown" class="dropdown-content" >
                   <!-- <a href="#home">PROFILE</a>
                   <a href="#about">SETTINGS</a> -->
                   <a href="#contact">LOGOUT</a>
                 </div>
             </div>
-            <p>User</p>
+            <p>{{user.email}}</p>
           </div>
       </md-toolbar>
 <!-- sidenav headeer end -->
 <!-- search -->
             <div layout layout-align="start center">
               <div class="search-input" layout layout-align="start center">
-                <input class="search-box" type="text" name="input" placeholder="Search..." autocomplete="off" autofocus></input>
+                <input class="search-box" type="text" name="input" placeholder="Search..." autocomplete="off" autofocus   ></input>
                <!--     <md-button class="md-fab md-mini md-primary" style="background-color: transparent; width: 40px; height: 24px;"> -->
                    <md-icon  style="color: grey;">search</md-icon>
         <!-- </md-button> -->
@@ -37,7 +38,7 @@
         <md-content>
           <md-list flex>
             <md-list-item class="md-2-line"  ng-click="user2(c)" ng-repeat="c in contacts | filter: search_contact track by $index" ng-class="selected.key == c.key ? 'selected' : 'noselected'">
-              <img ng-src="static/images/avt.png" class="md-avatar" alt="{{todos[0].who}}">
+             <img ng-src="static/images/avt.png" class="md-avatar" alt="{{todos[0].who}}">
                 <div class="md-list-item-text">
                   <span>{{c.email}}</span> 
                 </div>
@@ -48,32 +49,24 @@
         </md-content>
       </md-sidenav>
 <!-- contact list end -->
-      <div style="width:100%">
+      <div ng-show="selected.email" style="width:75%">
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
-          <div class="md-toolbar-tools" style="padding-left:14px">
+          <div class="md-toolbar-tools" style="padding-left:20px">
           <div><md-icon md-svg-src = 'static/images/person.svg'></md-icon></div>
-          <p>{{selected.email}}</p>
+          <p style="padding-left: 15px;">{{selected.email}}</p>
           </div>
           
         </md-toolbar>
-        <!-- <md-content > -->
-          <!-- <div> -->
-        <div style="
-        height: 82vh;
-    overflow-y: scroll;">
-            <div class="receiving">
-              <span>Hello. How are you ?</span>
-            </div>
+        <div style="height: 81.8vh; overflow-y: scroll;">
             <div ng-repeat="x in [1,2,3,4,5,6,7,8,9,10,11,12]">
               <div class="sending">
                 <p>Hey! I'm fine. Thanks for asking!</p>
               </div>
               <div class="receiving">
-                <span>Hello. How are you ?</span>
+                <p>Hello. How are you ?</p>
               </div>
             </div>
-            <br>
-            <footer style="margin-top: 50px">
+            <footer>
                 <div class="msg_type" ng-controller="sendtext">
                   <div layout layout-align="start center">
                     <div class="message-input" layout layout-align="start center">

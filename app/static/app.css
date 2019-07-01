@@ -30,7 +30,7 @@ input[type=search] {
       min-width: 160px;
       overflow: auto;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
+      /*z-index: 1;*/
 }
 
 .dropdown-content a {
@@ -118,8 +118,8 @@ input[type=search] {
 
 footer {
   background-color: white;
-   position: absolute;
-   bottom: 5px;
+   position: fixed;
+   bottom: 3px;
    width: 80%;
 }
 /*messages view point css*/
@@ -134,7 +134,7 @@ footer {
   background-color: white;
   border-radius: 10px;
   margin-top: 9px;
-  margin-left: 10px;
+  margin-left: 80px;
   padding-left: 12px;
   padding-bottom: 5px;
   padding-top: 2px;
@@ -144,6 +144,7 @@ footer {
   word-break: break-all;
   max-width: 50%;
   width: max-content;
+  margin-right: 80px;
   margin-left: auto;
   border: 0.5px solid #dedede;
   background-color: white;
@@ -157,23 +158,12 @@ footer {
   background-color:#00838F;
   color: white;
 }
+
 /* .noselected {
   border: 1px solid pink;
 } */
 
-.chats{
-    /* max-height: 604px; */
-    /* height: -webkit-fill-available; */
-  /* background-color: rgb(223, 200, 200); */
-  /* height:max-content; */
-  /* max-height: 50%; */
-  /* height: -webkit-fill-available; */
-  
-  /* max-height: 30%; */
-  
-}
-/*
-  .time-right {
+  /*.time-right {
   float: right;
   color: #aaa;
 }
@@ -182,5 +172,7 @@ footer {
   float: left;
   color: #999;
 }*/
+
+  
 
 /* message view point end */

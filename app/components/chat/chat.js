@@ -48,11 +48,10 @@ app.controller('index-controller',function(){
 // contact list end
 // message send controller
 app.controller('sendtext',function($scope,$http){
-  $scope.send = function (text) {   
+  $scope.send = function(text) {   
     var text_data = {
         content: text,
-        // user1_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwkM",
-        user2_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgICAgAoM"
+        user2_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDAnwkM"
     };
   var ss = JSON.stringify(text_data);
   $http.post('/handlers/msgsent', ss)}

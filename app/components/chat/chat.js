@@ -23,30 +23,26 @@ window.onclick = function(event) {
 
 // contact list js
 app.controller('contact-list',function($scope,$http){
-  $http.get('/handlers/current_user').then(function(response){
-    debugger
+  $http.get('/handlers/current_user')
+  .then(function(response){
     $scope.user = response.data; 
-    // if($scope.user){
-    //   window.location.assign("/chat#!/chat")
-    // }
+    return $http.get('/handlers/chat')
     })
-  $http.get('/handlers/chat').then(function(response){
+  .then(function(response){
     $scope.contacts = response.data; 
     })
     $scope.selected = null;
-    $scope.user2 = function(c) {
-      $scope.selected = c;
+    $scope.user2 = function(data) {
+      $scope.selected = data;
       var contact_chat = {
-        user2_key : c
+        user2_key : data.key
       };
-  var ss = JSON.stringify(contact_chat);
-  $http.post('/handlers/mainpage', ss)
+  var jstring = JSON.stringify(contact_chat);
+  $http.post('/handlers/mainpage', jstring)
     }
 });
 
 app.controller('index-controller',function(){
-  console.log('hie')
-  debugger
   window.location.assign("/chat#!/chat")
 })
 // contact list end
@@ -55,8 +51,8 @@ app.controller('sendtext',function($scope,$http){
   $scope.send = function (text) {   
     var text_data = {
         content: text,
-        user1_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwkM",
-        user2_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwoM"
+        // user1_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwkM",
+        user2_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgICAgAoM"
     };
   var ss = JSON.stringify(text_data);
   $http.post('/handlers/msgsent', ss)}

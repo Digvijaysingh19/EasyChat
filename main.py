@@ -29,84 +29,81 @@ from google.appengine.api import users
 """[The MainPage class handles all the operations happening on the main page of the app]
 """					
 class MainPage(webapp2.RequestHandler):
-	def post(self):
-		current_user = users.get_current_user()
-		req = json.loads(self.request.body)
+    def post(self):
+        print('MainPage &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        add_user()
+        time.sleep(1)
+        req = json.loads(self.request.body)
+        key1 = current_user_key()
+        key2 = ndb.Key(urlsafe=req.get('user2_key'))
 
-		key1 = post_current_user(current_user.email())
-		key2 = ndb.Key(urlsafe=req.get('user2_key'))
-		
-		#Checks if there is a cursor in the request
-		if self.request.get('cursor'):	
-			cursor = Cursor(urlsafe=self.request.get('cursor'))
-		else:
-			cursor = None
-		
-		chats, _cursor, more = Chats.query(ndb.AND(ndb.OR(Chats.sender_key == key1,Chats.sender_key == key2),\
-							   ndb.OR(Chats.receiver_key == key2,(Chats.receiver_key == key1)))).\
-							   order(-Chats.sent_time).fetch_page(10, start_cursor=cursor)
-		
-		#Sends last 10 chats between user1 and user2
-		row = []
-		for data in chats:
-			row.append(
-				{
-					'chat_key' : data.key.urlsafe(),
-					'user1_key' : data.sender_key.urlsafe(),
-					'user2_key' : data.receiver_key.urlsafe(),
-					'content' : data.content,
-					'chat_time' : str(data.sent_time) 
-				}
-			)
-		
-		self.response.write({more,json.dumps(row),_cursor.urlsafe()})
+        #Checks if there is a cursor in the request
+        if self.request.get('cursor'):	
+            cursor = Cursor(urlsafe=self.request.get('cursor'))
+        else:
+            cursor = None
+        
+        chats, _cursor, more = Chats.query(ndb.AND(ndb.OR(Chats.sender_key == key1,Chats.sender_key == key2),\
+                               ndb.OR(Chats.receiver_key == key2,(Chats.receiver_key == key1)))).\
+                               order(Chats.key).fetch_page(10, start_cursor=cursor)
+        
+        #Sends last 10 chats between user1 and user2
+        row = []
+        for data in chats:
+            row.append(
+                {
+                    'chat_key' : data.key.urlsafe(),
+                    'user1_key' : data.sender_key.urlsafe(),
+                    'user2_key' : data.receiver_key.urlsafe(),
+                    'content' : data.content,
+                    'chat_time' : str(data.sent_time) 
+                }
+            )
+        
+        if cursor:
+            self.response.write({"more":more,"data":json.dumps(row),"_cursor":_cursor.urlsafe()})
+        else:
+            self.response.write({"more":more,"data":json.dumps(row),"_cursor":cursor})
 
 """[The Message class sends the chat messages into the database]
 """
 class Message(webapp2.RequestHandler):
-	def post(self):
-		current_user = users.get_current_user()
-		req = json.loads(self.request.body)
-		chat = Chats()
-		key1 = post_current_user(current_user.email())
-		key2 = ndb.Key(urlsafe=req.get('user2_key'))
-		chat.populate(
-			sender_key = key1,
-			receiver_key = key2,
-			content = req.get('content'))
-		chat.put()
+    def post(self):
+        print('Message &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        add_user()
+        time.sleep(1)
+        current_user = get_user()
+        req = json.loads(self.request.body)
+        chat = Chats()
+        key1 = current_user_key(current_user.email())
+        key2 = ndb.Key(urlsafe=req.get('user2_key'))
+        chat.populate(
+            sender_key = key1.urlsafe(),
+            receiver_key = key2,
+            content = req.get('content'))
+        chat.put()
 
 class Index(webapp2.RequestHandler):
-	def get(self):
-		current_user = users.get_current_user()
-		json_dict = post_info(current_user)
-		self.response.write(json_dict)
-		print(json_dict)
+    def get(self):
+        print('Index &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        add_user()
+        json_dict = send_info()
+        self.response.write(json_dict)
 
-class Main(webapp2.RequestHandler):
-	def get(self):
-		current_user = users.get_current_user()
-		print(current_user)
-		user_email = current_user.email()
-		check_user = UserProfile.query(UserProfile.email == user_email).get()
-		if not check_user:
-			post_data(user_email,current_user.user_id())
-		self.redirect("/chat")
-		
 class CurrentUser(webapp2.RequestHandler):
-	def get(self):
-		current_user = users.get_current_user()
-		print(current_user)
-		user_email = current_user.email()
-		current_user_key = post_current_user(user_email)
-		user_key = {
-			"user1_key" : current_user_key,
-			"user1_email" : user_email
-		}
-		self.response.write(json.dumps(user_key))
+    def get(self):
+        print('CurrentUser &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        add_user()
+        time.sleep(1)
+        current_user = get_user()
+        user1_key = current_user_key()
+        current_user_info = {
+            "user1_key" : user1_key.urlsafe(),
+            "user1_email" : current_user.email()
+        }
+        self.response.write(json.dumps(current_user_info))
 
 app = webapp2.WSGIApplication([
-   webapp2.Route('/', Main),
   ('/handlers/current_user', CurrentUser),
 #   ('/handlers/signup', SignUp),
   ('/handlers/msgsent', Message),

@@ -27,10 +27,12 @@ app.controller('contact-list',function($scope,$http){
   $http.get('/handlers/current_user')
   .then(function(response){
     $scope.user = response.data; 
+    console.log($scope.user)
     return $http.get('/handlers/chat')
     })
   .then(function(response){
     $scope.contacts = response.data; 
+    console.log( $scope.contacts)
     })
 
     $scope.user2 = function(data) {
@@ -41,7 +43,7 @@ app.controller('contact-list',function($scope,$http){
   var jstring = JSON.stringify(contact_chat);
   $http.post('/handlers/mainpage', jstring).then(
     function(response)
-    {$scope.oldChat = response.data.data
+    {$scope.oldChat =  JSON.parse(response.data.data)
     console.log($scope.oldChat)}
   )
     }

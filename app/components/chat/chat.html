@@ -1,4 +1,5 @@
-<div layout="column" ng-cloak style="height:100%">
+    
+
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-disable-backdrop="" md-whiteframe="4" md-is-locked-open="true" 
@@ -51,11 +52,13 @@
       <div ng-hide="selected.email" style="width:75%; background-color: white">
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
           </md-toolbar>
+      
+          <center>
           <div class="welcome" layout="row" flex>
-            <img src="static/images/chatt.gif" style="opacity: 0.5;"> 
-            <p style="font-size:30px;margin-top: 280px;color:grey">WELCOME</p>
-
+            <img src="static/images/chatt.gif" style="opacity: 0.8;"> 
+            <p>WELCOME</p>
           </div>
+        </center>
       </div>
       <div ng-show="selected.email" style="width:75%;">
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
@@ -90,4 +93,3 @@
         </div>
         </div>       
   </section>
-</div>

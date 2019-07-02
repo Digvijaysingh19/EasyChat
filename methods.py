@@ -1,7 +1,10 @@
 from models import *
 import json
+from google.appengine.api import users
+import time
 
-def post_info(current_user):
+def send_info():
+    current_user = get_user()
     data = UserProfile.query(UserProfile.email != current_user.email()).fetch()
     row = []
     for d in data:
@@ -13,14 +16,17 @@ def post_info(current_user):
         })
     return json.dumps(row)
 
-def post_data(user_email,user_id):
-    user = UserProfile()
-    user.email = user_email
-    user.user_id = user_id 
-    user.put()
-
-def post_current_user(user_email):
-    user1_key = UserProfile.query(UserProfile.email == user_email).get(keys_only=True)
+def current_user_key():
+    current_user = get_user()
+    user1_key = UserProfile.query(UserProfile.email == current_user.email()).get(keys_only=True)
     if user1_key:
-        print (user1_key.urlsafe())
-        return user1_key.urlsafe()
+        return user1_key
+
+def add_user():
+    user = UserProfile()
+    current_user = get_user()
+    if not user.is_user_exist(current_user.email()):
+        user.create_user(current_user.email(), current_user.user_id())
+
+def get_user():
+    return users.get_current_user()

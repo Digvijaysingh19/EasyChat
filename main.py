@@ -69,30 +69,26 @@ class MainPage(webapp2.RequestHandler):
 """
 class Message(webapp2.RequestHandler):
     def post(self):
-        print('Message &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         time.sleep(1)
-        current_user = get_user()
         req = json.loads(self.request.body)
         chat = Chats()
-        key1 = current_user_key(current_user.email())
+        key1 = current_user_key()
         key2 = ndb.Key(urlsafe=req.get('user2_key'))
         chat.populate(
-            sender_key = key1.urlsafe(),
+            sender_key = key1,
             receiver_key = key2,
             content = req.get('content'))
         chat.put()
 
 class Index(webapp2.RequestHandler):
     def get(self):
-        print('Index &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         json_dict = send_info()
         self.response.write(json_dict)
 
 class CurrentUser(webapp2.RequestHandler):
     def get(self):
-        print('CurrentUser &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         time.sleep(1)
         current_user = get_user()

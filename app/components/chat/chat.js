@@ -41,7 +41,7 @@ app.controller('contact-list',function($scope,$http){
   var jstring = JSON.stringify(contact_chat);
   $http.post('/handlers/mainpage', jstring).then(
     function(response)
-    {$scope.oldChat = response.data
+    {$scope.oldChat = response.data.data
     console.log($scope.oldChat)}
   )
     }
@@ -58,8 +58,8 @@ app.controller('sendtext',function($scope,$http){
         content: text,
         user2_key:$scope.selected.key
     };
-  var ss = JSON.stringify(text_data);
-  $http.post('/handlers/msgsent', ss)}
+  var jstring = JSON.stringify(text_data);
+  $http.post('/handlers/msgsent', jstring)}
 
 
 });

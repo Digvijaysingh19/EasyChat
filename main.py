@@ -30,7 +30,6 @@ from google.appengine.api import users
 """					
 class MainPage(webapp2.RequestHandler):
     def post(self):
-        print('MainPage &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         time.sleep(1)
         req = json.loads(self.request.body)
@@ -63,7 +62,7 @@ class MainPage(webapp2.RequestHandler):
         if cursor:
             self.response.write({"more":more,"data":json.dumps(row),"_cursor":_cursor.urlsafe()})
         else:
-            self.response.write({"more":more,"data":json.dumps(row),"_cursor":cursor})
+            self.response.write(json.dumps({"more":more,"data":json.dumps(row),"_cursor":cursor}))
 
 """[The Message class sends the chat messages into the database]
 """

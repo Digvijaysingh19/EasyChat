@@ -44,7 +44,7 @@ class MainPage(webapp2.RequestHandler):
         
         chats, _cursor, more = Chats.query(ndb.AND(ndb.OR(Chats.sender_key == key1,Chats.sender_key == key2),\
                                ndb.OR(Chats.receiver_key == key2,(Chats.receiver_key == key1)))).\
-                               order(Chats.key).fetch_page(10, start_cursor=cursor)
+                               order(-Chats.sent_time).fetch_page(10, start_cursor=cursor)
         
         #Sends last 10 chats between user1 and user2
         row = []

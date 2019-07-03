@@ -69,7 +69,7 @@
           
         </md-toolbar>
         <div style="height: 82.8vh; overflow-y: scroll;">
-            <div ng-repeat="x in oldChat | filter: search_contact track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'">
+            <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'">
               <div >
                 <p>{{x.content}}</p>
               </div>

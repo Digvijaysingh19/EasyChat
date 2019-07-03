@@ -44,7 +44,9 @@ app.controller('contact-list',function($scope,$http){
   $http.post('/handlers/mainpage', jstring).then(
     function(response)
     {$scope.oldChat =  JSON.parse(response.data.data)
-    console.log($scope.oldChat)}
+    console.log($scope.oldChat)
+    // $scope.cursor = response.data._cursor
+    }
   )
     }
 });

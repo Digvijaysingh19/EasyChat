@@ -44,8 +44,12 @@ class MainPage(webapp2.RequestHandler):
         
         chats, _cursor, more = Chats.query(ndb.AND(ndb.OR(Chats.sender_key == key1,Chats.sender_key == key2),\
                                ndb.OR(Chats.receiver_key == key2,(Chats.receiver_key == key1)))).\
-                               order(-Chats.sent_time).fetch_page(10, start_cursor=cursor)
+                               order(Chats.key).fetch_page(15, start_cursor=cursor)
         
+        # limit=10
+        # offset=0
+        # chats= Chats.query(Chats.sender_key.IN([key1,key2]), Chats.receiver_key.IN([key1,key2])).order(-Chats.sent_time).fetch(10,offset=offset)
+
         #Sends last 10 chats between user1 and user2
         row = []
         for data in chats:
@@ -58,11 +62,11 @@ class MainPage(webapp2.RequestHandler):
                     'chat_time' : str(data.sent_time) 
                 }
             )
-        
+        jstring = sorted(row, key=lambda k: k['chat_time'],reverse=True)
         if cursor:
-            self.response.write({"more":more,"data":json.dumps(row),"_cursor":_cursor.urlsafe()})
+            self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":_cursor.urlsafe()}))
         else:
-            self.response.write(json.dumps({"more":more,"data":json.dumps(row),"_cursor":cursor}))
+            self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":cursor}))
 
 """[The Message class sends the chat messages into the database]
 """

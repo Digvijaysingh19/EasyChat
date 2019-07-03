@@ -16,6 +16,11 @@ handlers:
   script: main.app
   login : required
 
+- url: /_ah/admin/.*
+  script: google.appengine.ext.admin.application
+  login: admin
+  secure: always
+
 - url: /.*
   static_files: app/index.html
   upload: app/index.html

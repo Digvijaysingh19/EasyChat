@@ -30,7 +30,6 @@ from google.appengine.api import users
 """					
 class MainPage(webapp2.RequestHandler):
     def post(self):
-        print('MainPage &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         time.sleep(1)
         req = json.loads(self.request.body)
@@ -45,8 +44,12 @@ class MainPage(webapp2.RequestHandler):
         
         chats, _cursor, more = Chats.query(ndb.AND(ndb.OR(Chats.sender_key == key1,Chats.sender_key == key2),\
                                ndb.OR(Chats.receiver_key == key2,(Chats.receiver_key == key1)))).\
-                               order(Chats.key).fetch_page(10, start_cursor=cursor)
+                               order(Chats.key).fetch_page(15, start_cursor=cursor)
         
+        # limit=10
+        # offset=0
+        # chats= Chats.query(Chats.sender_key.IN([key1,key2]), Chats.receiver_key.IN([key1,key2])).order(-Chats.sent_time).fetch(10,offset=offset)
+
         #Sends last 10 chats between user1 and user2
         row = []
         for data in chats:
@@ -59,40 +62,36 @@ class MainPage(webapp2.RequestHandler):
                     'chat_time' : str(data.sent_time) 
                 }
             )
-        
+        jstring = sorted(row, key=lambda k: k['chat_time'],reverse=True)
         if cursor:
-            self.response.write({"more":more,"data":json.dumps(row),"_cursor":_cursor.urlsafe()})
+            self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":_cursor.urlsafe()}))
         else:
-            self.response.write({"more":more,"data":json.dumps(row),"_cursor":cursor})
+            self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":cursor}))
 
 """[The Message class sends the chat messages into the database]
 """
 class Message(webapp2.RequestHandler):
     def post(self):
-        print('Message &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         time.sleep(1)
-        current_user = get_user()
         req = json.loads(self.request.body)
         chat = Chats()
-        key1 = current_user_key(current_user.email())
+        key1 = current_user_key()
         key2 = ndb.Key(urlsafe=req.get('user2_key'))
         chat.populate(
-            sender_key = key1.urlsafe(),
+            sender_key = key1,
             receiver_key = key2,
             content = req.get('content'))
         chat.put()
 
 class Index(webapp2.RequestHandler):
     def get(self):
-        print('Index &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         json_dict = send_info()
         self.response.write(json_dict)
 
 class CurrentUser(webapp2.RequestHandler):
     def get(self):
-        print('CurrentUser &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         add_user()
         time.sleep(1)
         current_user = get_user()

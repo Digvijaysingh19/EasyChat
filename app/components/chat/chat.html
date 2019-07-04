@@ -67,22 +67,22 @@
           
         </md-toolbar>
         <div style="height: 82.8vh; overflow-y: scroll;">
-            <div ng-repeat="x in [1,2,3,4,5,6,7,8,9,10,11,12]">
-              <div class="sending">
-                <p>Hey! I'm fine. Thanks for asking!</p>
+            <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'">
+              <div >
+                <p>{{x.content}}</p>
               </div>
-              <div class="receiving">
-                <p>Hello. How are you ?</p>
-              </div>
+              <!-- <div class="receiving">
+                <p>{{oldChat}}</p>
+              </div> -->
             </div>
             <footer>
                 <div class="msg_type" ng-controller="sendtext">
                   <div layout layout-align="start center">
                     <div class="message-input" layout layout-align="start center">
-                      <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus ng-model="typetext"></input>
+                      <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus ng-model="typetext" ></input>
       
                     </div>  
-                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;" ng-click="send(typetext).reset()">
+                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;" ng-click="send(typetext); typetext=''" >
                 <md-icon  style="color: white;">send</md-icon>
               </md-button>
                   </div>

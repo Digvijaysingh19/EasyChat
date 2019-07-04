@@ -24,22 +24,31 @@ window.onclick = function(event) {
 
 // contact list js
 app.controller('contact-list',function($scope,$http){
+  $scope.selected = null;
   $http.get('/handlers/current_user')
   .then(function(response){
     $scope.user = response.data; 
+    console.log($scope.user)
     return $http.get('/handlers/chat')
     })
   .then(function(response){
     $scope.contacts = response.data; 
+    console.log( $scope.contacts)
     })
-    $scope.selected = null;
+
     $scope.user2 = function(data) {
       $scope.selected = data;
       var contact_chat = {
         user2_key : data.key
       };
   var jstring = JSON.stringify(contact_chat);
-  $http.post('/handlers/mainpage', jstring)
+  $http.post('/handlers/mainpage', jstring).then(
+    function(response)
+    {$scope.oldChat =  JSON.parse(response.data.data)
+    console.log($scope.oldChat)
+    // $scope.cursor = response.data._cursor
+    }
+  )
     }
 });
 
@@ -49,14 +58,15 @@ app.controller('index-controller',function(){
 // contact list end
 // message send controller
 app.controller('sendtext',function($scope,$http){
-  $scope.send = function (text) {   
+  $scope.send = function(text) {   
     var text_data = {
         content: text,
-        // user1_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgIDArwkM",
-        user2_key:"aghkZXZ-Tm9uZXIYCxILVXNlclByb2ZpbGUYgICAgICAgAoM"
+        user2_key:$scope.selected.key
     };
-  var ss = JSON.stringify(text_data);
-  $http.post('/handlers/msgsent', ss)}
+  var jstring = JSON.stringify(text_data);
+  $http.post('/handlers/msgsent', jstring)}
+
+
 });
 
 // signup js

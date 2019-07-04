@@ -21,6 +21,7 @@ window.onclick = function(event) {
 }
 // Dropdown end
 
+
 // contact list js
 app.controller('contact-list',function($scope,$http){
   $http.get('/handlers/current_user')

@@ -7,6 +7,16 @@ var app = angular.module('myApp', [
   'ngAnimate', 
   'ngAria'
 ])
+.controller('AppCtrl', function ($scope, $mdSidenav) {
+    $scope.toggleLeft = buildToggler('left');
+
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+  });
+
 app.config(function($locationProvider, $routeProvider) {
   // $locationProvider.hashPrefix('!');
   $routeProvider.when('/chat', {
@@ -20,5 +30,16 @@ app.config(function($locationProvider, $routeProvider) {
   })
   // .otherwise({redirectTo: '/view1'});
 });
+
+// var sd = angular.module('MyApp', ['ngMaterial'])
+//   .controller('AppCtrl', function ($scope, $mdSidenav) {
+//     $scope.toggleLeft = buildToggler('left');
+
+//     function buildToggler(componentId) {
+//       return function() {
+//         $mdSidenav(componentId).toggle();
+//       };
+//     }
+//   });
 
 

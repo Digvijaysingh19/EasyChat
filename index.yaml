@@ -14,14 +14,14 @@ indexes:
   properties:
   - name: receiver_key
   - name: sender_key
-  - name: sent_time
+  - name: __key__
+    direction: desc
 
 - kind: Chats
   properties:
   - name: receiver_key
   - name: sender_key
-  - name: __key__
-    direction: desc
+  - name: sent_time
 
 - kind: Chats
   properties:

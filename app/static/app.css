@@ -134,7 +134,7 @@ footer {
   background-color: white;
   border-radius: 10px;
   margin-top: 9px;
-  margin-left: 80px;
+  margin-left: 20px;
   padding-left: 12px;
   padding-bottom: 5px;
   padding-top: 2px;
@@ -144,7 +144,7 @@ footer {
   word-break: break-all;
   max-width: 50%;
   width: max-content;
-  margin-right: 80px;
+  margin-right: 20px;
   margin-left: auto;
   border: 0.5px solid #dedede;
   background-color: white;
@@ -158,13 +158,21 @@ footer {
     background-color: #00838f14;
     color: #0f828f;
 }
-
-
-
-  /*margin-left: 10px;*/
-  /*margin-top: 10px;*/
+.md-button.md-raised:not([disabled]) {
+    box-shadow: 0 0 0 0 rgba(0,0,0,.26);
 }
-
+.md-button {
+    min-width: 45px;
+  }
+ .icon {
+    font-size: 36px;
+}
+/*.md-raised{
+     background-color: #00838F;
+     border-radius: 6px;
+     position: absolute;
+     right: 15px;
+}*/
 /* .noselected {
   border: 1px solid pink;
 } */

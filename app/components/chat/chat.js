@@ -21,18 +21,18 @@ window.onclick = function(event) {
 }
 // Dropdown end
 
+
 // contact list js
 app.controller('contact-list',function($scope,$http){
   $scope.selected = null;
   $http.get('/handlers/current_user')
   .then(function(response){
     $scope.user = response.data; 
-    console.log($scope.user)
+    // console.log($scope.user)
     return $http.get('/handlers/chat')
     })
   .then(function(response){
     $scope.contacts = response.data; 
-    console.log( $scope.contacts)
     })
 
     $scope.user2 = function(data) {
@@ -41,17 +41,17 @@ app.controller('contact-list',function($scope,$http){
         user2_key : data.key
       };
   var jstring = JSON.stringify(contact_chat);
-  $http.post('/handlers/mainpage', jstring).then(
-    function(response)
+  $http.post('/handlers/mainpage', jstring)
+  .then(function(response)
     {$scope.oldChat =  JSON.parse(response.data.data)
-    console.log($scope.oldChat)}
+    }
   )
     }
 });
 
 app.controller('index-controller',function(){
   window.location.assign("/chat#!/chat")
-})
+});
 // contact list end
 // message send controller
 app.controller('sendtext',function($scope,$http){
@@ -62,8 +62,4 @@ app.controller('sendtext',function($scope,$http){
     };
   var jstring = JSON.stringify(text_data);
   $http.post('/handlers/msgsent', jstring)}
-
-
 });
-
-// signup js

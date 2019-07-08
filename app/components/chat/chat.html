@@ -1,30 +1,26 @@
     
 <!-- <div ng-controller="AppCtrl" style="height: 100%"> -->
-    <section layout="row" flex>
-      <md-sidenav class="md-sidenav-left" md-component-id="left"
-                md-disable-backdrop="" md-whiteframe="2" md-is-locked-open="$mdMedia('gt-md')" style=" overflow: hidden; background-color: white; width:25%;max-height: 100%;height:-webkit-fill-available;">
-                <!-- sidnav header  -->
-                <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
-          <div class="md-toolbar-tools" style="padding:14px 0;">
-          <div class="dropdown">
-              <md-button onclick="myFunction()" class="md-icon-button">
-                <!-- <div class="avt"> -->
-                 <md-icon  style="color: white;">person</md-icon>
-                <!-- </div> -->
-              </md-button>
-                <div id="myDropdown" class="dropdown-content" >
-                  <!-- <a href="#home">PROFILE</a>
-                  <a href="#about">SETTINGS</a> -->
-                  <a href="#contact">LOGOUT</a>
-                </div>
-            </div>
-            <p>{{user.user1_email}}</p>
-            <md-button ng-click="toggleLeft()" class="md-icon-button" style="background-color: #00838F;border-radius: 6px;position: absolute;right: 20px" hide-gt-md>
-            <md-icon style="color: white">keyboard_backspace</md-icon>
-          </md-button>
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left" md-component-id="left"
+              md-disable-backdrop="" md-whiteframe="2" md-is-locked-open="false" style=" overflow: hidden; background-color: white; width:25%">
+              <!-- sidnav header  -->
+              <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
+        <div class="md-toolbar-tools" style="padding:14px 0;">
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">
+              <div class="avt">
+               <md-icon  style="color: white;">person</md-icon>
+              </div>
+            </button>
+              <div id="myDropdown" class="dropdown-content" >
+                <!-- <a href="#home">PROFILE</a>
+                <a href="#about">SETTINGS</a> -->
+                <a href="#contact">LOGOUT</a>
+              </div>
           </div>
-         
-      </md-toolbar>
+          <p>{{user.user1_email}}</p>
+        </div>
+    </md-toolbar>
 <!-- sidenav headeer end -->
 <!-- search -->
 <md-divider style="width: 100%"></md-divider>
@@ -38,63 +34,28 @@
           <md-divider style="width: 100%"></md-divider>
 <!-- search end -->
 <!-- contact list -->
-        <md-content>
-          <md-list style="max-height: 100%;height:-webkit-fill-available"flex>
-            <md-list-item class="md-2-line"  ng-click="user2(c);toggleLeft()" ng-repeat="c in contacts | filter: search_contact track by $index" ng-class="selected.key == c.key ? 'selected' : 'noselected'">
-             <img ng-src="static/images/avt.png" class="md-avatar">
-                <div class="md-list-item-text">
-                  <span>{{c.email}}</span> 
-                </div>
-                <md-divider style="width: 100%"></md-divider>
-            </md-list-item>
-            <md-divider style="width: 100%"></md-divider>
-          </md-list>
-        </md-content>
-      </md-sidenav>
+      <md-content>
+        <md-list style="max-height: 100%;height:-webkit-fill-available;"flex>
+          <md-list-item class="md-2-line"  ng-click="user2(c);toggleLeft()" ng-repeat="c in contacts | filter: search_contact track by $index" ng-class="selected.key == c.key ? 'selected' : 'noselected'">
+           <img ng-src="static/images/avt.png" class="md-avatar">
+              <div class="md-list-item-text">
+                <span>{{c.email}}</span> 
+              </div>
+              <md-divider style="width: 100%"></md-divider>
+          </md-list-item>
+          <md-divider style="width: 100%"></md-divider>
+        </md-list>
+      </md-content>
+    </md-sidenav>
 <!-- contact list end -->
-      <!-- <div ng-hide="selected.email" style="width: 100%"> -->
-        <!-- <md-toolbar class="md-theme-indigo"> -->
-          <!-- </md-toolbar> -->
-      
-          <!-- <center> -->
-          <!-- <div class="welcome"> -->
-            <!-- <img src="static/images/chatt.gif" style="opacity: 0.8;">  -->
-            <!-- <p>WELCOME</p> -->
-          <!-- </div> -->
-        <!-- </center> -->
-      <!-- </div> -->
- <div layout="column"  flex>
-  <!-- <div style="position: fixed;"> -->
-  <!-- <div ng-hide="selected.email" style="background-color: white">
+    <!-- <div ng-hide="selected.email" style="width:75%; background-color: white">
       <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="toggleLeft()"class="md-icon-button" aria-label="More" style="background-color: #00838F;border-radius: 6px;">
-            <md-icon style="color: white">insert_comment</md-icon>
-      </md-button>
-          <p style="font-family:Lucida Console">Contacts</p>
-          </div>
         </md-toolbar>
+    
         <center>
-            <p>WELCOME</p>
-        </center>
-      </div>
-   --> 
-        <!-- <div ng-show="selected.email" style="background-color: white"> -->
-      <md-toolbar class="md-theme-indigo" style="width:100%;
-      background-color:#00838F;">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="toggleLeft()"class="md-icon-button" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
-            <md-icon style="color: white">format_list_bulleted</md-icon>
-          </md-button>
-          <div hide-gt-md>
-            <!-- <md-icon md-svg-src = 'static/images/person.svg'></md-icon> -->
-            <md-icon style="color: white">person</md-icon>      
-          </div>
-          <!-- <p>hey</p> --> 
-          <p>{{selected.email}}</p>
-            <md-button class="md-icon-button" style="background-color: #00838F;border-radius: 6px; position: absolute;right: 25px">
-            <md-icon style="color: white">more_vert</md-icon>
-          </md-button>
+        <div class="welcome" layout="row" flex>
+          <img src="static/images/chatt.gif" style="opacity: 0.8;"> 
+          <p>WELCOME</p>
         </div>
       </center>
     </div> -->
@@ -162,17 +123,6 @@
          <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'">
             <div>
               <p>{{x.content}}</p>
-        <!-- chatting block -->
-           <md-content>
-          <md-list style="max-height: 83vh;height:-webkit-fill-available"flex>
-        <div layout="column" layout-align="end center">
-          <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'" >
-              <div>
-                <p style="line-height: 1.0;">{{x.content}}</p>
-              </div>
-              <!-- <div class="receiving">
-                <p>{{oldChat}}</p>
-              </div> -->
             </div>
             <!-- <div class="receiving">
               <p>{{oldChat}}</p>
@@ -195,26 +145,4 @@
             </footer>
       </div>       
 </section>
-<!-- </div> -->
-            <br>
-          </div>
-        </md-list>
-      </md-content>
-           <div class="footer">
-                <div class="msg_type" ng-controller="sendtext" >
-                  <div layout layout-align="start center">
-                    <div class="message-input" layout layout-align="start center">
-                      <!-- <form action="/handlers/msgsent"> -->
-                      <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus ng-model="typetext" ></input>
-                      <!-- </form> -->
-                    </div>  
-                    <md-button ng-submit="" class="md-fab md-mini md-primary" aria-label="Use Android"style="background-color: #00838F;" ng-click="send(typetext); typetext=''" >
-                <md-icon  style="color: white;">send</md-icon>
-              </md-button>
-                  </div>
-                  </div>
-              </div>
-        </div>     
-        <!-- </div>   -->
-  </section>
 <!-- </div> -->

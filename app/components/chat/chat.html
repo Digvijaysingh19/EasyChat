@@ -80,12 +80,11 @@
       </div>
    --> 
         <!-- <div ng-show="selected.email" style="background-color: white"> -->
-      <md-toolbar class="md-theme-indigo" style="width:100%;
-      background-color:#00838F;">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="toggleLeft()"class="md-icon-button" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
-            <md-icon style="color: white">format_list_bulleted</md-icon>
-          </md-button>
+      <md-toolbar class="md-theme-indigo" style="width:100%;background-color:#00838F;">
+          <div class="md-toolbar-tools">
+             <md-button ng-click="toggleLeft()"class="md-icon-button" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
+                <md-icon style="color: white">format_list_bulleted</md-icon>
+             </md-button>
           <div hide-gt-md>
             <!-- <md-icon md-svg-src = 'static/images/person.svg'></md-icon> -->
             <md-icon style="color: white">person</md-icon>      
@@ -99,8 +98,8 @@
       </md-toolbar>
 
         <!-- chatting block -->
-           <md-content>
-          <md-list style="max-height: 83vh;height:-webkit-fill-available"flex>
+        <!-- <md-content> -->
+        <div  style="height: 82vh; overflow-y: scroll;">
         <div layout="column" layout-align="end center">
           <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'" >
               <div>
@@ -110,11 +109,13 @@
                 <p>{{oldChat}}</p>
               </div> -->
             </div>
-            <br>
+            <!-- <br> -->
           </div>
-        </md-list>
-      </md-content>
-           <div class="footer">
+        </div>
+      <!-- </md-content> -->
+
+      <!-- chatting block end -->
+           <footer>
                 <div class="msg_type" ng-controller="sendtext" >
                   <div layout layout-align="start center">
                     <div class="message-input" layout layout-align="start center">
@@ -123,11 +124,11 @@
                       <!-- </form> -->
                     </div>  
                     <md-button ng-submit="" class="md-fab md-mini md-primary" aria-label="Use Android"style="background-color: #00838F;" ng-click="send(typetext); typetext=''" >
-                <md-icon  style="color: white;">send</md-icon>
-              </md-button>
+                       <md-icon  style="color: white;">send</md-icon>
+                    </md-button>
                   </div>
-                  </div>
-              </div>
+                </div>
+              </footer>
         </div>     
         <!-- </div>   -->
   </section>

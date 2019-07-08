@@ -101,13 +101,6 @@ input[type=search] {
     border: black;
     width: 100%;
   }
-
-.footer {
-  background-color: white;
-   position: fixed;
-   bottom: 3px;
-   width: 100%;
-}
 /*messages view point css*/
 
 .receiving {
@@ -148,21 +141,7 @@ input[type=search] {
     color: #0f828f;
 }
 
-/*.md-button.md-raised:not([disabled]) {
-    box-shadow: 0 0 0 0 rgba(0,0,0,.26);
-}
-.md-button {
-    min-width: 45px;
-  }
- .icon {
-    font-size: 36px;
-}*/
-/*.md-raised{
-     background-color: #00838F;
-     border-radius: 6px;
-     position: absolute;
-     right: 15px;
-}*/
+
 /* .noselected {
   border: 1px solid pink;
 } */

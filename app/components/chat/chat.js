@@ -23,7 +23,7 @@ window.onclick = function(event) {
 
 
 // contact list js
-app.controller('contact-list',function($scope,$http){
+app.controller('contact-list',function($scope,$http,$interval){
   $scope.selected = null;
   $http.get('/handlers/current_user')
   .then(function(response){
@@ -35,18 +35,17 @@ app.controller('contact-list',function($scope,$http){
     $scope.contacts = response.data; 
     })
 
-    $scope.user2 = function(data) {
-      $scope.selected = data;
+    $scope.user2 = function(data) {$scope.selected = data; $interval(getdata,500);}
+      function getdata(data){
+      
       var contact_chat = {
-        user2_key : data.key
+        user2_key : $scope.selected.key
       };
   var jstring = JSON.stringify(contact_chat);
   $http.post('/handlers/mainpage', jstring)
   .then(function(response)
     {$scope.oldChat =  JSON.parse(response.data.data)
-    }
-  )
-    }
+    })}
 });
 
 app.controller('index-controller',function(){
@@ -55,7 +54,8 @@ app.controller('index-controller',function(){
 // contact list end
 // message send controller
 app.controller('sendtext',function($scope,$http){
-  $scope.send = function(text) {   
+  $scope.send = function(text, e) {
+    e.preventDefault();
     var text_data = {
         content: text,
         user2_key:$scope.selected.key

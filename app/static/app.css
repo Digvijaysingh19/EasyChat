@@ -116,35 +116,38 @@ input[type=search] {
     width: 100%;
   }
 
-footer {
+/*footer {
   background-color: white;
    position: fixed;
    bottom: 3px;
    width: 75%;
-}
+}*/
 /*messages view point css*/
 
 .receiving {
-  word-break: break-all;
-  height: auto;
-  display: flex;
-  max-width: 50%;
-  width: max-content;
-  border: 0.5px solid #dedede;
-  background-color: white;
-  border-radius: 10px;
-  margin-top: 9px;
-  margin-left: 20px;
-  padding-left: 12px;
-  padding-bottom: 5px;
-  padding-top: 2px;
-  padding-right: 12px;
+    word-break: break-all;
+    height: auto;
+    display: flex;
+    max-width: 50%;
+    width: max-content;
+    align-self: start;
+    border: 0.5px solid #dedede;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 9px;
+    margin-left: 20px;
+    padding-left: 12px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-right: 12px;
 }
 .sending {
+  display: flex;  
   word-break: break-all;
-  max-width: 50%;
+  max-width:50%;
   width: max-content;
-  margin-right: 20px;
+  margin-top: 10px;
+  margin-right: 15px;
   margin-left: auto;
   border: 0.5px solid #dedede;
   background-color: white;

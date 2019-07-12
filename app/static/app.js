@@ -9,7 +9,6 @@ var app = angular.module('myApp', [
 ])
 .controller('AppCtrl', function ($scope, $mdSidenav,$mdDialog) {
     $scope.toggleLeft = buildToggler('left');
-
     function buildToggler(componentId) {
       return function() {
         $mdSidenav(componentId).toggle();
@@ -51,28 +50,8 @@ var app = angular.module('myApp', [
   };
   });
 app.config(function($locationProvider, $routeProvider) {
-  // $locationProvider.hashPrefix('!');
-  $routeProvider.when('/chat', {
+  $routeProvider.when('/', {
   	templateUrl: 'components/chat/chat.html',
-    // controller: 'AppCtrl'
     controller: 'contact-list'
   })
-  .when('/', {
-    template: 'blank',
-    controller: 'index-controller'
-  })
-  // .otherwise({redirectTo: '/view1'});
 });
-
-// var sd = angular.module('MyApp', ['ngMaterial'])
-//   .controller('AppCtrl', function ($scope, $mdSidenav) {
-//     $scope.toggleLeft = buildToggler('left');
-
-//     function buildToggler(componentId) {
-//       return function() {
-//         $mdSidenav(componentId).toggle();
-//       };
-//     }
-//   });
-
-

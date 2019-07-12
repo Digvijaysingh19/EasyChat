@@ -21,7 +21,6 @@ window.onclick = function(event) {
 }
 // Dropdown end
 
-
 // contact list js
 app.controller('contact-list',function($scope,$http,$interval){
   $scope.selected = null;
@@ -47,11 +46,8 @@ app.controller('contact-list',function($scope,$http,$interval){
     {$scope.oldChat =  JSON.parse(response.data.data)
     })}
 });
-
-app.controller('index-controller',function(){
-  window.location.assign("/chat#!/chat")
-});
 // contact list end
+
 // message send controller
 app.controller('sendtext',function($scope,$http){
   $scope.send = function(text, e) {

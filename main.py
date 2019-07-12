@@ -60,14 +60,9 @@ class MainPage(webapp2.RequestHandler):
             cursor = Cursor(urlsafe=self.request.get('cursor'))
         else:
             cursor = None
-        
-        chats, _cursor, more = Chats.query(ndb.AND(ndb.OR(Chats.sender_key == key1,Chats.sender_key == key2),\
-                               ndb.OR(Chats.receiver_key == key2,(Chats.receiver_key == key1)))).\
+
+        chats, _cursor, more = Chats.query(Chats.sender_key.IN([key1,key2]) , Chats.receiver_key.IN([key1,key2])).\
                                order(Chats.key).fetch_page(15, start_cursor=cursor)
-        
-        # limit=10
-        # offset=0
-        # chats= Chats.query(Chats.sender_key.IN([key1,key2]), Chats.receiver_key.IN([key1,key2])).order(-Chats.sent_time).fetch(10,offset=offset)
 
         #Sends last 10 chats between user1 and user2
         row = []

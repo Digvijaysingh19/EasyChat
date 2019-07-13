@@ -23,6 +23,7 @@ window.onclick = function(event) {
 
 // contact list js
 app.controller('contact-list',function($scope,$http,$interval){
+
   $scope.selected = null;
   $http.get('/handlers/current_user')
   .then(function(response){

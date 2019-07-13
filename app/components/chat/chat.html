@@ -1,9 +1,3 @@
-    
-<!-- <div ng-controller="AppCtrl" style="height: 100%"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <md-button class="md-primary md-raised" ng-click="showSignup($event)">
-      SignUp
-    </md-button>
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-disable-backdrop="" md-whiteframe="2" md-is-locked-open="$mdMedia('gt-md')" style=" overflow: hidden; background-color: white; width:25%;max-height: 100%;height:-webkit-fill-available;">
@@ -34,7 +28,7 @@
             <div layout layout-align="start center">
               <div class="search-input" layout layout-align="start center">
                 <input class="search-box" type="text" name="input" placeholder="Search..." autocomplete="off" ng-model="search_contact"autofocus></input>
-                  <md-icon  style="color: grey;">search</md-icon>
+                <md-icon  style="color: grey;">search</md-icon>
               </div>
               
             </div>
@@ -42,7 +36,7 @@
 <!-- search end -->
 <!-- contact list -->
         <md-content>
-          <md-list style="max-height: 100%;height:-webkit-fill-available;"flex>
+          <md-list style="max-height: 100%;height:-webkit-fill-available;">
             <md-list-item class="md-2-line"  ng-click="user2(c);toggleLeft()" ng-repeat="c in contacts | filter: search_contact track by $index" ng-class="selected.key == c.key ? 'selected' : 'noselected'">
              <img ng-src="static/images/avt.png" class="md-avatar">
                 <div class="md-list-item-text">
@@ -54,40 +48,35 @@
           </md-list>
         </md-content>
       </md-sidenav>
-<!-- contact list end -->
-      <!-- <div ng-hide="selected.email" style="width:75%; background-color: white">
+      <div layout="column" flex>
+      <div ng-hide="selected.email">
         <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
-          </md-toolbar>
-      
-          <center>
-          <div class="welcome" layout="row" flex>
-            <img src="static/images/chatt.gif" style="opacity: 0.8;"> 
-            <p>WELCOME</p>
+        <div class="md-toolbar-tools">
+          <md-button ng-click="toggleLeft()" class="md-raised" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
+            <md-icon style="color: white">format_list_bulleted</md-icon>
+          </md-button>
           </div>
-        </center>
-      </div> -->
+        </md-toolbar>
+      </div>
  <div layout="column" flex>
-      <!-- <div ng-show="selected.email" style="width:75%;"> -->
+<div ng-show="selected.email">
       <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
         <div class="md-toolbar-tools">
           <md-button ng-click="toggleLeft()" class="md-raised" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
             <md-icon style="color: white">format_list_bulleted</md-icon>
           </md-button>
-           <div hide-gt-md>
+           <!-- <div hide-gt-md>
             <md-icon style="color: white">person</md-icon>     
-          </div>
+          </div> -->
           <p>{{selected.email}}</p>
-
-            <div class="dialog" layout="column" layout-align="center center" style="width:100%">
-               <md-button class="md-icon-button md-primary md-raised edgePadding" ng-click="openFromLeft()" style="background-color: #00838F;position: absolute;right: 25px" >
+          <!-- <div class="dialog" layout="column" layout-align="center center" style="width:100%">-->
+            <md-button class="md-icon-button md-primary md-raised edgePadding" ng-click="showSignup($event)" style="background-color: #00838F;position: absolute;right: 25px">
                  <md-icon  style="color: white;">more_vert</md-icon>
                 </md-button>
-            </div>
+            <!-- </div> -->
         </div>
       </md-toolbar>
-
-        <!-- chatting block -->
-        <div  style="height: 82vh; overflow-y: scroll;" >
+      <div  style="height: 82vh; overflow-y: scroll;" >
         <div layout="column" layout-align="end center">
            <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'">
               <div>
@@ -101,7 +90,7 @@
                 <form action="send(typetext)">
                   <div layout layout-align="start center">
                     <div class="message-input" layout layout-align="start center">
-                      <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" autofocus ng-model="typetext" ></input>
+                      <input class="input-box" type="text" name="input" placeholder="Type a message.." autocomplete="off" ng-model="typetext" autofocus></input>
                     </div>  
                        <md-button type="submit" class="md-fab md-mini md-primary" aria-label="Use Android" style="background-color: #00838F;" ng-click="send(typetext, $event); typetext=''" >
                          <md-icon  style="color: white;">send</md-icon>
@@ -110,6 +99,5 @@
                 </form>
               </div>
             </footer>
-        </div>       
+    </div>
   </section>
-<!-- </div> -->

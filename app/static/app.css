@@ -190,6 +190,10 @@ input[type=search] {
  .icon {
     font-size: 36px;
 }
+.chat_block{
+  display: grid;
+  grid-template-rows: 0 auto 18%;
+}
 /*.md-raised{
      background-color: #00838F;
      border-radius: 6px;

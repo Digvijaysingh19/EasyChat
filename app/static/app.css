@@ -136,12 +136,8 @@ input[type=search] {
     width: 100%;
   }
 
-/*footer {
-  background-color: white;
-   position: fixed;
-   bottom: 3px;
-   width: 75%;
-}*/
+/* footer {
+  align-content: end;} */
 /*messages view point css*/
 
 .receiving {
@@ -192,7 +188,8 @@ input[type=search] {
 }
 .chat_block{
   display: grid;
-  grid-template-rows: 0 auto 18%;
+  grid-template-rows: auto auto auto;
+
 }
 /*.md-raised{
      background-color: #00838F;

@@ -10,6 +10,7 @@ class UserProfile(ndb.Model):
 	email = ndb.StringProperty()
 	user_id = ndb.StringProperty()
 	profile_pic = ndb.StringProperty()
+	# status = ndb.StringProperty()
 	date = ndb.DateTimeProperty(auto_now_add=True)
 
 	"""[Creates the User]
@@ -39,4 +40,5 @@ class Chats(ndb.Model):
 	sender_key = ndb.KeyProperty(kind=UserProfile)
 	receiver_key = ndb.KeyProperty(kind=UserProfile)
 	content = ndb.TextProperty()
+	# unread = ndb.BooleanProperty(default=True)
 	sent_time = ndb.DateTimeProperty(auto_now_add=True)

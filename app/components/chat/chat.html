@@ -40,7 +40,8 @@
         <md-list-item class="md-2-line"  ng-click="user2(c);toggleLeft()" ng-repeat="c in contacts | filter: search_contact track by $index" ng-class="selected.key == c.key ? 'selected' : 'noselected'">
          <img ng-src="static/images/avt.png" class="md-avatar">
             <div class="md-list-item-text">
-              <span>{{c.email}}</span> 
+              <span>{{c.email}}</span>
+              <span class="dot"><center>00</center></span>
             </div>
             <md-divider style="width: 100%"></md-divider>
         </md-list-item>

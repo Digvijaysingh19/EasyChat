@@ -76,6 +76,7 @@ class MainPage(webapp2.RequestHandler):
                     'chat_time' : str(data.sent_time) 
                 }
             )
+            print(data.sent_time.time)
         jstring = sorted(row, key=lambda k: k['chat_time'],reverse=True)
         if cursor:
             self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":_cursor.urlsafe()}))
@@ -97,6 +98,10 @@ class Message(webapp2.RequestHandler):
             receiver_key = key2,
             content = req.get('content'))
         chat.put()
+        # user = UserProfile.query(UserProfile.key == key2).get()
+        # user.badge_count += 1
+        # user.put()
+
 
 app = webapp2.WSGIApplication([
   ('/handlers/current_user', CurrentUser),

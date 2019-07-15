@@ -190,6 +190,17 @@ min-width: 45px;
 .icon {
 font-size: 36px;
 }
+.dot {
+  position: absolute;
+  padding: 2px;
+  right: 29px;
+  width: max-content;
+  height: 30px;
+  min-width: 30px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
 /*.md-raised{
 background-color: #00838F;
 border-radius: 6px;

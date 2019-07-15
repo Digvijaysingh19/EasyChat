@@ -186,10 +186,23 @@ input[type=search] {
  .icon {
     font-size: 36px;
 }
+<<<<<<< HEAD
 .chat_block{
   display: grid;
   grid-template-rows: auto auto auto;
 
+=======
+.dot {
+  position: absolute;
+  padding: 2px;
+  right: 29px;
+  width: max-content;
+  height: 30px;
+  min-width: 30px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+>>>>>>> notif_badge
 }
 /*.md-raised{
      background-color: #00838F;

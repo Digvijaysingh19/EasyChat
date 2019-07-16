@@ -34,9 +34,9 @@ app.controller('contact-list',function($scope,$http,$interval){
     })
   .then(function(response){
     $scope.contacts = response.data; 
-    })},1500);
+    })},15000);
 
-    $scope.user2 = function(data) {$scope.selected = data; $interval(getdata,500);}
+    $scope.user2 = function(data) {$scope.selected = data; $interval(getdata,5000);}
       function getdata(data){
       
       var contact_chat = {

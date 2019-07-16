@@ -25,7 +25,8 @@ window.onclick = function(event) {
 app.controller('contact-list',function($scope,$http,$interval){
 
   $scope.selected = null;
-  $http.get('/handlers/current_user')
+  $interval(function(){ 
+    $http.get('/handlers/current_user')
   .then(function(response){
     $scope.user = response.data; 
     // console.log($scope.user)
@@ -33,7 +34,7 @@ app.controller('contact-list',function($scope,$http,$interval){
     })
   .then(function(response){
     $scope.contacts = response.data; 
-    })
+    })},1500);
 
     $scope.user2 = function(data) {$scope.selected = data; $interval(getdata,500);}
       function getdata(data){

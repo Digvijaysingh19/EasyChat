@@ -5,6 +5,7 @@ import webapp2
 import json
 from methods import *
 from google.appengine.api import users
+import datetime
 
 """[The CurrentUser class sends the currently logged user info in the response]
 """
@@ -64,6 +65,11 @@ class MainPage(webapp2.RequestHandler):
         chats, _cursor, more = Chats.query(Chats.sender_key.IN([key1,key2]) , Chats.receiver_key.IN([key1,key2])).\
                                order(Chats.key).fetch_page(15, start_cursor=cursor)
 
+        badges = Chats.query(Chats.receiver_key == key1, Chats.sender_key == key2).fetch()
+
+        for b in badges:
+            b.unread = False
+            b.put()
         #Sends last 10 chats between user1 and user2
         row = []
         for data in chats:
@@ -73,10 +79,9 @@ class MainPage(webapp2.RequestHandler):
                     'user1_key' : data.sender_key.urlsafe(),
                     'user2_key' : data.receiver_key.urlsafe(),
                     'content' : data.content,
-                    'chat_time' : str(data.sent_time) 
+                    'chat_time' : data.sent_time.strftime("%X")
                 }
             )
-            print(data.sent_time.time)
         jstring = sorted(row, key=lambda k: k['chat_time'],reverse=True)
         if cursor:
             self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":_cursor.urlsafe()}))
@@ -98,10 +103,6 @@ class Message(webapp2.RequestHandler):
             receiver_key = key2,
             content = req.get('content'))
         chat.put()
-        # user = UserProfile.query(UserProfile.key == key2).get()
-        # user.badge_count += 1
-        # user.put()
-
 
 app = webapp2.WSGIApplication([
   ('/handlers/current_user', CurrentUser),

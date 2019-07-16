@@ -10,12 +10,15 @@ Returns:
 def send_info():
     current_user = get_user()
     data = UserProfile.query(UserProfile.email != current_user.email()).fetch()
+    cur_user_key = current_user_key()
     row = []
     for d in data:
+        badges = Chats.query(Chats.receiver_key == cur_user_key, Chats.sender_key == d.key, Chats.unread == True).count()
         row.append({
             'first_name': d.first_name,
             'last_name' : d.last_name,
             'key' : d.key.urlsafe(),
+            'badge_count' : badges,
             'email' : d.email
         })
     return json.dumps(row)

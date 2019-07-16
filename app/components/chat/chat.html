@@ -41,7 +41,7 @@
          <img ng-src="static/images/avt.png" class="md-avatar">
             <div class="md-list-item-text">
               <span>{{c.email}}</span>
-              <span class="dot"><center>00</center></span>
+              <span class="dot" ng-if="c.badge_count != 0"><center>{{c.badge_count}}</center></span>
             </div>
             <md-divider style="width: 100%"></md-divider>
         </md-list-item>
@@ -77,11 +77,12 @@
         <!-- </div> -->
     </div>
   </md-toolbar>
-  <div  style="height: 82vh; overflow-y: scroll;" >
+  <div  style="height: 87vh; overflow-y: scroll;" >
     <div layout="column" layout-align="end center">
        <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'">
           <div>
             <p style="line-height: 1.0;">{{x.content}}</p>
+            <div class="time"><p align="right">{{x.chat_time}}</p></div>
           </div>
         </div>
       </div>

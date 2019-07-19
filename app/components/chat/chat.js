@@ -24,17 +24,33 @@ window.onclick = function(event) {
 // contact list js
 app.controller('contact-list',function($scope,$http,$interval){
 
+  $scope.user=null;
   $scope.selected = null;
   $interval(function(){ 
     $http.get('/handlers/current_user')
   .then(function(response){
     $scope.user = response.data; 
-    // console.log($scope.user)
+    // console.log($scope.user);
     return $http.get('/handlers/chat')
     })
   .then(function(response){
     $scope.contacts = response.data; 
-    })},15000);
+    })},5000);
+    
+    setTimeout(function(){
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "dd2ff41a-6821-4a95-97ff-cb453ef2dd35",
+        });
+      });
+
+      let myCustomUniqueUserId = $scope.user.user1_key;
+  
+      OneSignal.push(function() {
+        OneSignal.setExternalUserId(myCustomUniqueUserId);
+      });
+      },10000);
 
     $scope.user2 = function(data) {$scope.selected = data; $interval(getdata,5000);}
       function getdata(data){

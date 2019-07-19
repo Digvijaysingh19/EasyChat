@@ -6,6 +6,8 @@ import json
 from methods import *
 from google.appengine.api import users
 import datetime
+import secret
+from onesignal import OneSignal, DeviceNotification
 
 """[The CurrentUser class sends the currently logged user info in the response]
 """
@@ -103,6 +105,20 @@ class Message(webapp2.RequestHandler):
             receiver_key = key2,
             content = req.get('content'))
         chat.put()
+
+        user = get_user()
+        client = OneSignal(secret.onesignal_app_id, secret.onesignal_rest_api_key)
+        notification_to_users = DeviceNotification(
+            contents={
+                "en": req.get('content')
+            },
+            headings={
+                "en": user.email()
+            },
+            # include_player_ids=["b6fc8584-4010-47ad-8620-3150ecdcf9c7"]
+            include_external_user_ids=[req.get('user2_key')]
+        )
+        client.send(notification_to_users)
 
 app = webapp2.WSGIApplication([
   ('/handlers/current_user', CurrentUser),

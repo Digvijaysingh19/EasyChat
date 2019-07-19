@@ -3,5 +3,6 @@ node_modules/*
 e2e-tests/*
 
 # Compiled source
-
 *.pyc
+
+/secret.py

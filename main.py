@@ -58,14 +58,15 @@ class MainPage(webapp2.RequestHandler):
         key1 = current_user_key()
         key2 = ndb.Key(urlsafe=req.get('user2_key'))
 
-        #Checks if there is a cursor in the request
-        if self.request.get('cursor'):	
-            cursor = Cursor(urlsafe=self.request.get('cursor'))
+        # chats, _cursor, more = Chats.query(Chats.sender_key.IN([key1,key2]) , Chats.receiver_key.IN([key1,key2])).\
+        #                        order(Chats.key).fetch_page(15, start_cursor=cursor)
+        limit = 15
+        if self.request.get('offset'):
+            offset = self.request.get('offset') + limit
         else:
-            cursor = None
-
-        chats, _cursor, more = Chats.query(Chats.sender_key.IN([key1,key2]) , Chats.receiver_key.IN([key1,key2])).\
-                               order(Chats.key).fetch_page(15, start_cursor=cursor)
+            offset = 0
+        chats = Chats.query(Chats.sender_key.IN([key1,key2]) , Chats.receiver_key.IN([key1,key2])).\
+                               order(-Chats.sent_time).fetch(limit,offset = offset)
 
         badges = Chats.query(Chats.receiver_key == key1, Chats.sender_key == key2).fetch()
 
@@ -84,11 +85,8 @@ class MainPage(webapp2.RequestHandler):
                     'chat_time' : data.sent_time.strftime("%X")
                 }
             )
-        jstring = sorted(row, key=lambda k: k['chat_time'],reverse=True)
-        if cursor:
-            self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":_cursor.urlsafe()}))
-        else:
-            self.response.write(json.dumps({"more":more,"data":json.dumps(jstring),"_cursor":cursor}))
+
+        self.response.write(json.dumps({"offset":offset,"data":json.dumps(row)}))
 
 """[The Message class sends the chat messages into the database]
 """

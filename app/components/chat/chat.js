@@ -4,6 +4,7 @@ var aa = angular.module('a', ['ngMaterial'])
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
+  
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -61,19 +62,19 @@ app.controller('contact-list',function($scope,$http,$interval){
   var jstring = JSON.stringify(contact_chat);
   $http.post('/handlers/mainpage', jstring)
   .then(function(response)
-    {$scope.oldChat =  JSON.parse(response.data.data)
+    {debugger
+      $scope.oldChat =  JSON.parse(response.data.data)
+      console.log($scope.oldChat);
     })}
+
+    $scope.send = function(text, e) {
+      e.preventDefault();
+      var text_data = {
+          content: text,
+          user2_key:$scope.selected.key
+      };
+    var jstring = JSON.stringify(text_data);
+    $http.post('/handlers/msgsent', jstring)}
+
 });
 // contact list end
-
-// message send controller
-app.controller('sendtext',function($scope,$http){
-  $scope.send = function(text, e) {
-    e.preventDefault();
-    var text_data = {
-        content: text,
-        user2_key:$scope.selected.key
-    };
-  var jstring = JSON.stringify(text_data);
-  $http.post('/handlers/msgsent', jstring)}
-});

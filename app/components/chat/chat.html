@@ -5,18 +5,11 @@
             <md-toolbar class="md-theme-indigo" style="background-color:#00838F;">
       <div class="md-toolbar-tools" style="padding:14px 0;">
       <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">
-            <div class="avt">
-             <md-icon  style="color: white;">person</md-icon>
-            </div>
-          </button>
-            <div id="myDropdown" class="dropdown-content" >
-              <!-- <a href="#home">PROFILE</a>
-              <a href="#about">SETTINGS</a> -->
-              <a href="#contact">LOGOUT</a>
-            </div>
+          <div class="avt">
+              <md-icon  style="color: white; padding-left: 10px;">person</md-icon>
+          </div>
         </div>
-        <p>{{user.user1_email}}</p>
+        <p>&nbsp;&nbsp;&nbsp;{{user.user1_email}}</p>
         <md-button ng-click="toggleLeft()" class="md-icon-button" style="background-color: #00838F;border-radius: 6px;position: absolute;right: 20px" hide-gt-md>
         <md-icon style="color: white">keyboard_backspace</md-icon>
       </md-button>
@@ -56,6 +49,14 @@
       <md-button ng-click="toggleLeft()" class="md-raised" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
         <md-icon style="color: white">format_list_bulleted</md-icon>
       </md-button>
+       <md-button onclick="myFunction()" class="md-icon-button md-primary md-raised edgePadding dropbtn " style="background-color: #00838F;right: 25px">    
+        <md-icon  style="color: white;">more_vert</md-icon>
+      </md-button>
+      <div id="myDropdown" class="dropdown-content" >
+        <a ng-click="showSignup($event)">EDIT PROFILE</a>
+        <!-- <a href="#about">SETTINGS</a>
+          <a href="#contact">LOGOUT</a> -->
+        </div>
       </div>
     </md-toolbar>
   </div>
@@ -71,9 +72,7 @@
       </div> -->
       <p>{{selected.email}}</p>
       <!-- <div class="dialog" layout="column" layout-align="center center" style="width:100%">-->
-        <md-button class="md-icon-button md-primary md-raised edgePadding" ng-click="showSignup($event)" style="background-color: #00838F;position: absolute;right: 25px">
-             <md-icon  style="color: white;">more_vert</md-icon>
-            </md-button>
+        
         <!-- </div> -->
     </div>
   </md-toolbar>
@@ -88,7 +87,7 @@
       </div>
     </div>
        <footer>
-          <div class="msg_type" ng-controller="sendtext" >
+          <div class="msg_type">
             <form action="send(typetext)">
               <div layout layout-align="start center">
                 <div class="message-input" layout layout-align="start center">

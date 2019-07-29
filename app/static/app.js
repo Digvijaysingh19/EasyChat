@@ -11,7 +11,7 @@ var app = angular.module('myApp', [
     /*dialog*/
     $scope.showSignup = function(ev) {
       $mdDialog.show({
-        // controller: DialogController,
+        controller: DialogController,
         templateUrl: 'components/chat/temp.html',
         // parent: angular.element(document.body),
         targetEvent: ev,
@@ -24,19 +24,19 @@ var app = angular.module('myApp', [
         $scope.status = 'You cancelled the dialog.';
       });
     };
-    // function DialogController($scope, $mdDialog) {
-    //   $scope.hide = function() {  
-    //     $mdDialog.hide();
-    //   };
+    function DialogController($scope, $mdDialog) {
+      $scope.hide = function() {  
+        $mdDialog.hide();
+      };
   
-    //   $scope.cancel = function() {
-    //     $mdDialog.cancel();
-    //   };
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
   
-    //   $scope.answer = function(answer) {
-    //     $mdDialog.hide(answer);
-    //   };
-    // }
+      $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+      };
+    }
     
     $scope.toggleLeft = buildToggler('left');
     function buildToggler(componentId) {

@@ -49,11 +49,12 @@
       <md-button ng-click="toggleLeft()" class="md-raised" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
         <md-icon style="color: white">format_list_bulleted</md-icon>
       </md-button>
-       <md-button onclick="myFunction()" class="md-icon-button md-primary md-raised edgePadding dropbtn " style="background-color: #00838F;right: 25px">    
+       <md-button onclick="myFunction()" class="md-icon-button edgePadding dropbtn " style="background-color: #00838F;position:absolute;
+       right: 25px">    
         <md-icon  style="color: white;">more_vert</md-icon>
       </md-button>
-      <div id="myDropdown" class="dropdown-content" >
-        <a ng-click="showSignup($event)">EDIT PROFILE</a>
+      <div id="myDropdown" class="dropdown-content" style="position: absolute;right:25px;top:50px;background-color:white;color:grey">
+        <a ng-click="showSignup($event)" href="#about">EDIT PROFILE</a>
         <!-- <a href="#about">SETTINGS</a>
           <a href="#contact">LOGOUT</a> -->
         </div>
@@ -67,16 +68,22 @@
       <md-button ng-click="toggleLeft()" class="md-raised" style="background-color: #00838F;border-radius: 6px;" hide-gt-md>
         <md-icon style="color: white">format_list_bulleted</md-icon>
       </md-button>
-       <!-- <div hide-gt-md>
-        <md-icon style="color: white">person</md-icon>     
-      </div> -->
       <p>{{selected.email}}</p>
       <!-- <div class="dialog" layout="column" layout-align="center center" style="width:100%">-->
         
         <!-- </div> -->
+        <md-button onclick="myFunction()" class="md-icon-button edgePadding dropbtn " style="background-color: #00838F;position:absolute;
+        right: 25px">    
+         <md-icon  style="color: white;">more_vert</md-icon>
+       </md-button>
+       <div id="myDropdown" class="dropdown-content" style="position: absolute;right:25px;top:50px;background-color:white;color:grey">
+         <a ng-click="showSignup($event)" href="#about">EDIT PROFILE</a>
+         <!-- <a href="#about">SETTINGS</a>
+           <a href="#contact">LOGOUT</a> -->
+         </div>
     </div>
   </md-toolbar>
-  <div  style="height: 87vh; overflow-y: scroll;" >
+  <div style="height: 87vh; overflow-y: scroll;">
     <div layout="column" layout-align="end center">
        <div ng-repeat="x in oldChat | orderBy:'-' track by $index" ng-class="selected.key == x.user2_key ? 'sending' : 'receiving'">
           <div>

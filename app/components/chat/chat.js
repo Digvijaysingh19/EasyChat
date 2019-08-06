@@ -24,7 +24,7 @@ window.onclick = function(event) {
 
 // contact list js
 app.controller('contact-list',function($scope,$http,$interval){
-
+  $scope.loading=true
   $scope.user=null;
   $scope.selected = null;
   $interval(function(){ 
@@ -36,6 +36,7 @@ app.controller('contact-list',function($scope,$http,$interval){
     })
   .then(function(response){
     $scope.contacts = response.data; 
+    $scope.loading=false
     })},5000);
     
     setTimeout(function(){
@@ -52,7 +53,7 @@ app.controller('contact-list',function($scope,$http,$interval){
         OneSignal.setExternalUserId(myCustomUniqueUserId);
       });
       },10000);
-
+      
     $scope.user2 = function(data) {$scope.selected = data; $interval(getdata,5000);}
       function getdata(data){
       
@@ -74,7 +75,9 @@ app.controller('contact-list',function($scope,$http,$interval){
           user2_key:$scope.selected.key
       };
     var jstring = JSON.stringify(text_data);
-    $http.post('/handlers/msgsent', jstring)}
+    $http.post('/handlers/msgsent', jstring)
+    $scope.loading=true
+  }
 
 });
 // contact list end
